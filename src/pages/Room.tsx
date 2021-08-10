@@ -1,4 +1,3 @@
-import logoImg from '../assets/images/logo.svg'
 import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
@@ -10,11 +9,6 @@ export function Room() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask"/>
-          <form action="">
-          <input type="search" name="" id="" />
-          <Button>Buscar</Button>
-          </form>
           <div className="form-footer">
             { user ? (
               <div className="user-info">
@@ -23,6 +17,11 @@ export function Room() {
               </div>
             ) : ('') }
           </div>
+          <Button>Play</Button>
+          <form action="">
+          <input type="search" name="" id="" />
+          <Button>Buscar</Button>
+          </form>
         </div>
       </header>
       <main className="content">
