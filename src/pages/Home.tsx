@@ -21,6 +21,7 @@ export function Home() {
     <div id="page-auth">
       <aside>
         <img src={gif} alt="" />
+        <h2>Plataforma <br /> Autodidata</h2>
       </aside>
       <main>
       <div className="main-content">
@@ -30,6 +31,7 @@ export function Home() {
         <img src={googleIconImg} alt="Logo do Google"/>
           Entre com o Google
         </button>
+        
       </div>
       </main>
     </div>
