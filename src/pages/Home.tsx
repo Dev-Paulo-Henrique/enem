@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom'
 import logoImg from '../assets/images/logo.svg'
+import gif from '../assets/images/animation_500_kry1cpvo.gif'
 import googleIconImg from '../assets/images/google-icon.svg'
 import '../styles/auth.scss'
 import { useAuth } from '../hooks/useAuth'
@@ -18,10 +19,13 @@ export function Home() {
 
   return (
     <div id="page-auth">
+      <aside>
+        <img src={gif} alt="" />
+      </aside>
       <main>
       <div className="main-content">
       <img src={logoImg} alt="Letmeask"/>
-      <div className="separator">ENEM</div>
+      <div className="separator">Login</div>
         <button onClick={handleCreateRoom} className="create-room">
         <img src={googleIconImg} alt="Logo do Google"/>
           Entre com o Google
