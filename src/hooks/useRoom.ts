@@ -35,7 +35,7 @@ export function useRoom(roomId: string) {
   const [ title, setTitle ] = useState('')
 
   useEffect(() => {
-    const roomRef = database.ref(`rooms/${roomId}`)
+    const roomRef = database.ref(`rooms/`)//`rooms/`${roomId}
     roomRef.on('value', room => {
       const databaseRoom = room.val()
       const firebaseQuestions: FirebaseQuestions = databaseRoom.questions  ??  {}

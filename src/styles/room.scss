@@ -1,7 +1,8 @@
 #page-room {
   header {
-    padding: 24px;
     border-bottom: 1px solid #e2e2e2;
+    background: #ffffff;
+    box-shadow: 0 0 3px;
 
     .content {
       max-width: 1120px;
@@ -10,13 +11,13 @@
       justify-content: space-between;
       align-items: center;
 
-      > img {
-        max-height: 45px;
+      >button{
+        margin: 10px;
       }
-
       > div {
         display: flex;
-        gap: 16px;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .user-info {
@@ -75,4 +76,27 @@
     }
     }
   }
+
+  .main-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+
+    .main{
+      border: 1px solid #000;
+      border-radius: 10px;
+      width: 60%;
+      height: auto;
+      box-shadow: 0 0 10px;
+      background: #FFF;
+      padding: 30px;
+    }
+    aside{
+      width: 30%;
+      background: #6486;
+      border: 1px solid #000;
+    }
+  }
+  
 }

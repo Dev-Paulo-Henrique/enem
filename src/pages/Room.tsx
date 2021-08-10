@@ -18,15 +18,18 @@ export function Room() {
             ) : ('') }
           </div>
           <Button>Play</Button>
-          <form action="">
-          <input type="search" name="" id="" />
-          <Button>Buscar</Button>
-          </form>
         </div>
       </header>
-      <main className="content">
+      <div className="main-content">
+      <main className="main">
+        <h1>TIPO</h1>
+      <strong>TÍTULO</strong>
+
         {user?.name}
+        
       </main>
+      <aside>o</aside>
+      </div>
     </div>
     
   );
