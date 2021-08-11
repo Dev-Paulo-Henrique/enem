@@ -1,14 +1,14 @@
 import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
-import { useParams, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 export function Room() {
   const history = useHistory()
   const { user } = useAuth()
 
-  async function handleEndRoom() {
-    await  history.push('/main/play')
+  async function play() {
+    await  history.push(`/play/`)
   }
 
   return (
@@ -23,7 +23,7 @@ export function Room() {
               </div>
             ) : ('')}
           </div>
-          <Button onClick={handleEndRoom}>Play</Button>
+          <Button onClick={play}>Play</Button>
         </div>
       </header>
       <div className="matter">

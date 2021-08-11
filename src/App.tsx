@@ -13,7 +13,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/main/" component={Room}/>
-        <Route path="/main/play" component={Play}/>
+        <Route path="/play/" exact component={Play}/>
         <Route path="/admin/rooms/:id" component={AdminRoom}/>
         </Switch>
     </AuthContextProvider>
