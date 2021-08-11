@@ -20,7 +20,11 @@ export function Room() {
           <Button>Play</Button>
         </div>
       </header>
-      <fieldset className="fieldset">
+      <div className="matter">
+      <nav>oi</nav>
+      <aside>Experience</aside>
+      </div>
+      <fieldset>
       <ul>
       <li className="main">
         <h1>TIPO</h1>
@@ -57,7 +61,7 @@ export function Room() {
       </ul>
       
       </fieldset>
-      <div className="aside">oi</div>
+      
       </div>
     
   );
