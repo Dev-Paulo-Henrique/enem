@@ -19,7 +19,29 @@ export function Play() {
           <div className="play">Play</div>
         </div>
       </header>
-    
+      <main>
+        <p>questao</p>
+        <div className="a">
+        <input type="checkbox" name="a" id="a" />
+        <label htmlFor="">oi</label>
+        </div>
+        <div className="b">
+        <input type="checkbox" name="b" id="b" />
+        <label htmlFor="">oi</label>
+        </div>
+        <div className="c">
+        <input type="checkbox" name="c" id="c" />
+        <label htmlFor="">oi</label>
+        </div>
+        <div className="d">
+        <input type="checkbox" name="d" id="d" />
+        <label htmlFor="">oi</label>
+        </div>
+        <div className="e">
+        <input type="checkbox" name="e" id="e" />
+        <label htmlFor="">oi</label>
+        </div>
+        </main>
     </div>
 
   );
