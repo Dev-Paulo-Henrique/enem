@@ -3,7 +3,7 @@
     border-bottom: 1px solid #e2e2e2;
     background: #ffffff;
     box-shadow: 0 0 3px;
-    
+    overflow: hidden;
 
     .content {
       max-width: 1120px;
@@ -79,13 +79,12 @@
   }
 
   .fieldset{
-    width: 90%;
-    display: block;
-    align-items: center;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
     margin: 20px;
-    overflow: auto;
-    padding: 0 -20% 0 0;
-
+    overflow-y: auto;
+    height: 500px;
 
     li{
       border: 1px solid #000;
@@ -104,9 +103,10 @@
     
   }
   .aside{
-    width: 30%;
+    width: 20%;
     background: #000;
     border: 1px solid #000;
+    float: right;
   }
   
 }
