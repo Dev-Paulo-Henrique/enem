@@ -20,17 +20,45 @@ export function Room() {
           <Button>Play</Button>
         </div>
       </header>
-      <div className="main-content">
-      <main className="main">
+      <fieldset className="fieldset">
+      <ul>
+      <li className="main">
         <h1>TIPO</h1>
-      <strong>TÍTULO</strong>
-
+        <strong>TÍTULO</strong>
+        <div className="fav">❤</div>
+        <p>Texto</p>
         {user?.name}
         
-      </main>
-      <aside>o</aside>
+      </li>
+      <li className="main">
+        <h1>TIPO</h1>
+        <strong>TÍTULO</strong>
+        <div className="fav">❤</div>
+        <p>Texto</p>
+        {user?.name}
+        
+      </li>
+      <li className="main">
+        <h1>TIPO</h1>
+        <strong>TÍTULO</strong>
+        <div className="fav">❤</div>
+        <p>Texto</p>
+        {user?.name}
+        
+      </li>
+      <li className="main">
+        <h1>TIPO</h1>
+        <strong>TÍTULO</strong>
+        <div className="fav">❤</div>
+        <p>Texto</p>
+        {user?.name}
+        
+      </li>
+      </ul>
+      
+      </fieldset>
+      <div className="aside">oi</div>
       </div>
-    </div>
     
   );
 }

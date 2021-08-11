@@ -3,6 +3,7 @@
     border-bottom: 1px solid #e2e2e2;
     background: #ffffff;
     box-shadow: 0 0 3px;
+    
 
     .content {
       max-width: 1120px;
@@ -77,26 +78,35 @@
     }
   }
 
-  .main-content{
-    display: flex;
-    justify-content: space-between;
+  .fieldset{
+    width: 90%;
+    display: block;
     align-items: center;
-    margin: 10px;
+    margin: 20px;
+    overflow: auto;
+    padding: 0 -20% 0 0;
 
-    .main{
+
+    li{
       border: 1px solid #000;
       border-radius: 10px;
-      width: 60%;
+      width: auto;
       height: auto;
-      box-shadow: 0 0 10px;
+      box-shadow: 2px 2px 5px;
       background: #FFF;
       padding: 30px;
+      display: flex;
+      flex-direction: column;
+      margin: 20px;
+
     }
-    aside{
-      width: 30%;
-      background: #6486;
-      border: 1px solid #000;
-    }
+    
+    
+  }
+  .aside{
+    width: 30%;
+    background: #000;
+    border: 1px solid #000;
   }
   
 }
