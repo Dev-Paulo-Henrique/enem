@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
 import { useParams, useHistory } from 'react-router-dom'
 
-export function Room() {
+export function Play() {
   const history = useHistory()
   const { user } = useAuth()
 

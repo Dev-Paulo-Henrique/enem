@@ -115,21 +115,25 @@
   flex-direction: column;
   float: right;
   width: 25%;
-  background: teal;
   margin: 20px;
 
-  nav{
-    width: 20%;
-    background: #000;
-    border: 1px solid #000;
-    margin: 20px;
-  }
+  nav, aside{
+    background: #FFF;
+    margin-top: 20px;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 20px;
 
-  aside{
-    width: 20%;
-    background: #000;
-    border: 1px solid #000;
-    margin: 20px;
+    ul{
+      li{
+        list-style: none;
+
+        &+li{
+          margin-top: 20px
+        }
+      }
+
+    }
   }
 
 }
