@@ -28,13 +28,11 @@ export function Room() {
       </header>
       <div className="matter">
         <nav>
-          <ul>
-            <li>Ciências da Natureza</li>
-            <li>Ciências Humanas</li>
-            <li>Linguagens, Códigos e suas Tecnologias</li>
-            <li>Matemática e suas tecnologias</li>
-            <li>Redação</li>
-          </ul>
+            <a href="https://">Ciências da Natureza</a>
+            <a href="https://">Ciências Humanas</a>
+            <a href="https://">Liguagens, Códigos e suas Tecnologias</a>
+            <a href="https://">Matemática e suas tecnologias</a>
+            <a href="https://">Redação</a>
         </nav>
         <aside>Experience</aside>
       </div>

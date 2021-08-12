@@ -21,6 +21,7 @@ export function Play() {
       </header>
       <main>
         <p>questao</p>
+        <div className="alt">
         <div className="a">
         <input type="checkbox" name="a" id="a" />
         <label htmlFor="">oi</label>
@@ -40,6 +41,8 @@ export function Play() {
         <div className="e">
         <input type="checkbox" name="e" id="e" />
         <label htmlFor="">oi</label>
+        </div>
+        
         </div>
         </main>
     </div>
