@@ -40,14 +40,14 @@ export function Room() {
         <ul>
           <li className="main">
             <div className="content">
+              <div className="together">
               <div className="background"></div>
-            <h1 className="type">TIPO</h1>
+            <h1 className="type">Linguagens, Códigos e suas Tecnologias</h1>
+              </div>
             <div className="heart"></div>
             </div>
-            <strong className="title">TÍTULO</strong>
-            
-            <p className="text">Texto</p>
-            {user?.name}
+            <strong className="title">Inglês</strong>
+            <p className="text">In ancient Rome, there was the habit of celebrating the birthday of a person. There weren’t parties like we know today, but cakes were prepared and offers were made. Then, the habits of wishing happy birthday, giving gifts and lighting candles became popular as a way to protect the birthday person from devils and ensure good things to the next year in the person’s life. The celebrations only became popular like we know today after fourteen centuries, in a collective festival performed in Germany.</p>
           </li>
         </ul>
 

@@ -101,19 +101,23 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        .background{
-          content: '';
-          height: 1px;
-          border: 1px solid #000000;
-          border-radius: 50%;
-          padding: 5px;
-        }
-        .type{
-          font-size: 25px;
+        .together{
+          display: flex;
+          align-items: center;
+          .background{
+            border: 1px solid #000000;
+            border-radius: 50%;
+            padding: 20px;
+            background: #F95A2C;
+          }
+          .type{
+            font-size: 30px;
+            margin-left: 10px;
+          }
         }
         .heart {
           margin: 20px;
-          background: red;
+          background: #F95A2C;
           height: 20px;
           width: 20px;
           transform: rotate(-45deg);
@@ -123,7 +127,7 @@
       .heart:before,
       .heart:after {
           content: "";
-          background: red;
+          background: #F95A2C;
           border-radius: 50%;
           height: 20px;
           width: 20px;
@@ -137,10 +141,12 @@
       }
       }
       .title{
-
+        margin-top: 32px;
+        font-size: 20px;
       }
       .text{
-
+        margin-top: 16px;
+        color: #777777;
       }
 
     }
@@ -180,14 +186,11 @@
           margin-top: 30px
         }
       }
-
   }
-
 }
 @media only screen and (max-width: 820px) {
   .matter{
     display: none !important
    }
   }
-  
 }
