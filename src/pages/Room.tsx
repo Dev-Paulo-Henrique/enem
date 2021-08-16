@@ -39,36 +39,15 @@ export function Room() {
       <fieldset>
         <ul>
           <li className="main">
-            <h1>TIPO</h1>
-            <strong>TÍTULO</strong>
-            <div className="fav">❤</div>
-            <p>Texto</p>
+            <div className="content">
+              <div className="background"></div>
+            <h1 className="type">TIPO</h1>
+            <div className="heart"></div>
+            </div>
+            <strong className="title">TÍTULO</strong>
+            
+            <p className="text">Texto</p>
             {user?.name}
-
-          </li>
-          <li className="main">
-            <h1>TIPO</h1>
-            <strong>TÍTULO</strong>
-            <div className="fav">❤</div>
-            <p>Texto</p>
-            {user?.name}
-
-          </li>
-          <li className="main">
-            <h1>TIPO</h1>
-            <strong>TÍTULO</strong>
-            <div className="fav">❤</div>
-            <p>Texto</p>
-            {user?.name}
-
-          </li>
-          <li className="main">
-            <h1>TIPO</h1>
-            <strong>TÍTULO</strong>
-            <div className="fav">❤</div>
-            <p>Texto</p>
-            {user?.name}
-
           </li>
         </ul>
 
