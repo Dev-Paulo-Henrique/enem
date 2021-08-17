@@ -4,6 +4,7 @@ import { Button } from '../components/Button';
 import { useHistory } from 'react-router-dom'
 import Envelope from '../assets/images/envelope.svg'
 import Bell from '../assets/images/bell.svg'
+import List from '../assets/images/list.svg'
 
 
 export function Room() {
@@ -30,7 +31,7 @@ export function Room() {
           <Button onClick={play}>Play</Button>
           <img src={Envelope} alt="Envelope"/>
           <img src={Bell} alt="Bell"/>
-          <Button onClick={play}>Sair</Button>
+          <img src={List} alt="List"/>
           </div>
         </div>
       </header>
