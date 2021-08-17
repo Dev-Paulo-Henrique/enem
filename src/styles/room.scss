@@ -190,13 +190,38 @@
       }
     }
 
-    .loading{
+    .load{
       content: "";
       border: 1px solid #000;
       border-radius: 20px;
       height: 10px;
       width: 22%;
       position: absolute;
+
+      .loading{
+      content: "";
+      background: #FF9692;
+      border-radius: 20px;
+      height: 10px;
+      width: 50%;
+      position: absolute;
+      margin-top: -1px;
+      margin-left: -2px;
+      border: 1px solid #000;
+      .indicator{
+      content: "";
+      background: #FFF;
+      border-radius: 20px;
+      height: 10px;
+      width: 50%;
+      position: absolute;
+      margin-top: -5px;
+      margin-left: 90%;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      }
+      }
     }
     
     .space{
