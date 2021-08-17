@@ -23,7 +23,10 @@ export function Room() {
               </div>
             ) : ('')}
           </div>
+          <div className="button">
           <Button onClick={play}>Play</Button>
+          <Button onClick={play}>Sair</Button>
+          </div>
         </div>
       </header>
       <div className="matter">
