@@ -27,23 +27,23 @@ Os representantes do G4 (Brasil, Alemanha, Índia e Japão) reiteraram, em setem
 Os países mencionados no texto justificam sua pretensão com base na seguinte característica comum:</p>
         <div className="alt">
         <div className="a">
-        <input type="checkbox" name="a" id="a" />
+        <input type="radio" name="alt" id="a" />
         <label htmlFor="">Extensividade de área territorial.</label>
         </div>
         <div className="b">
-        <input type="checkbox" name="b" id="b" />
+        <input type="radio" name="alt" id="b" />
         <label htmlFor="">Protagonismo em escala regional.</label>
         </div>
         <div className="c">
-        <input type="checkbox" name="c" id="c" />
+        <input type="radio" name="alt" id="c" />
         <label htmlFor="">Investimento em tecnologia militar.</label>
         </div>
         <div className="d">
-        <input type="checkbox" name="d" id="d" />
+        <input type="radio" name="alt" id="d" />
         <label htmlFor=""> Desenvolvimento de energia nuclear.</label>
         </div>
         <div className="e">
-        <input type="checkbox" name="e" id="e" />
+        <input type="radio" name="alt" id="e" />
         <label htmlFor="">Disponibilidade de recursos minerais.</label>
         </div>
         
