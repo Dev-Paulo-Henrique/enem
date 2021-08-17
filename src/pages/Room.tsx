@@ -2,10 +2,11 @@ import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
 import { useHistory } from 'react-router-dom'
+//import Swal from 'sweetalert2'
+import { auth } from '../services/firebase'
 import Envelope from '../assets/images/envelope.svg'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
-
 
 export function Room() {
   const history = useHistory()
@@ -13,6 +14,11 @@ export function Room() {
 
   async function play() {
     await  history.push(`/play/`)
+  }
+
+  async function exit() {
+    await auth.signOut()
+    await  history.push('/')
   }
 
   return (
@@ -29,6 +35,7 @@ export function Room() {
           </div>
           <div className="btn">
           <Button onClick={play}>Play</Button>
+          <Button onClick={exit}>Exit</Button>
           <img src={Envelope} alt="Envelope"/>
           <img src={Bell} alt="Bell"/>
           <img src={List} alt="List"/>

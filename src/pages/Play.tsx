@@ -16,7 +16,7 @@ export function Play() {
               </div>
             ) : ('')}
           </div>
-          <div className="play">Play</div>
+          <div className="play">Pular</div>
         </div>
       </header>
       <main>
