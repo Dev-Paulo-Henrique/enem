@@ -28,13 +28,45 @@ export function Room() {
       </header>
       <div className="matter">
         <nav>
-            <a href="https://">Ciências da Natureza</a>
-            <a href="https://">Ciências Humanas</a>
-            <a href="https://">Liguagens, Códigos e suas Tecnologias</a>
-            <a href="https://">Matemática e suas tecnologias</a>
-            <a href="https://">Redação</a>
+        <div className="together">
+        <div className="content">
+        <div className="background 1"></div>
+            <a href="https://">
+              Ciências da Natureza
+              </a>
+              </div>
+              <div className="content">
+              <div className="background 2"></div>
+            <a href="https://">
+              Ciências Humanas
+              </a>
+              </div>
+              <div className="content">
+              <div className="background 3"></div>
+            <a href="https://">
+              Liguagens, Códigos e suas Tecnologias
+              </a>
+              </div>
+              <div className="content">
+              <div className="background 4"></div>
+            <a href="https://">
+              Matemática e suas tecnologias
+              </a>
+              </div>
+              <div className="content">
+              <div className="background 5"></div>
+            <a href="https://">
+              Redação
+              </a>
+              </div>
+              </div>
         </nav>
-        <aside>Experience</aside>
+        <div className="xp">
+        <aside>
+        <div className="background"></div>
+          Experience
+          </aside>
+        </div>
       </div>
       <fieldset>
         <ul>
