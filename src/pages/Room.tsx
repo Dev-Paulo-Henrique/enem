@@ -30,31 +30,31 @@ export function Room() {
         <nav>
         <div className="together">
         <div className="content">
-        <div className="background 1"></div>
+        <div className="background one"></div>
             <a href="https://">
               Ciências da Natureza
               </a>
               </div>
               <div className="content">
-              <div className="background 2"></div>
+              <div className="background two"></div>
             <a href="https://">
               Ciências Humanas
               </a>
               </div>
               <div className="content">
-              <div className="background 3"></div>
+              <div className="background three"></div>
             <a href="https://">
               Liguagens, Códigos e suas Tecnologias
               </a>
               </div>
               <div className="content">
-              <div className="background 4"></div>
+              <div className="background four"></div>
             <a href="https://">
               Matemática e suas tecnologias
               </a>
               </div>
               <div className="content">
-              <div className="background 5"></div>
+              <div className="background five"></div>
             <a href="https://">
               Redação
               </a>
