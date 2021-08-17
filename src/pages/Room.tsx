@@ -66,6 +66,11 @@ export function Room() {
         <div className="background"></div>
           Experience
           </aside>
+          <div className="loading"></div>
+         <div className="space">
+         <span className="zero">0</span>
+         <span className="hundred">100</span>
+         </div>
         </div>
       </div>
       <fieldset>
