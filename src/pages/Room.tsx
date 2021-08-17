@@ -2,6 +2,9 @@ import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
 import { useHistory } from 'react-router-dom'
+import Envelope from '../assets/images/envelope.svg'
+import Bell from '../assets/images/bell.svg'
+
 
 export function Room() {
   const history = useHistory()
@@ -23,8 +26,10 @@ export function Room() {
               </div>
             ) : ('')}
           </div>
-          <div className="button">
+          <div className="btn">
           <Button onClick={play}>Play</Button>
+          <img src={Envelope} alt="Envelope"/>
+          <img src={Bell} alt="Bell"/>
           <Button onClick={play}>Sair</Button>
           </div>
         </div>

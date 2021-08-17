@@ -1,5 +1,5 @@
 .button {
-    margin-top: 64px;
+    //margin-top: 64px;
     height: 50px;
     border-radius: 8px;
     font-weight:  500;
@@ -13,22 +13,7 @@
     border: 0;
     transition: filter 0.2s;
 
-    img {
-      margin-right: 8px;
-    }
-
-    &.outlined {
-      background: #FFF;
-      border: 1px solid #835AFD;
-      color: #835AFD
-    }
-
-    &:not(:disabled):hover {
+    &:hover {
       filter: brightness(0.9);
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
     }
   }
