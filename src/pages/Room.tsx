@@ -1,19 +1,26 @@
 import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 //import Swal from 'sweetalert2'
 import { auth } from '../services/firebase'
 import Envelope from '../assets/images/envelope.svg'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
 
+type RoomParams = {
+  id: string;
+}
+
 export function Room() {
   const history = useHistory()
   const { user } = useAuth()
 
   async function play() {
-    await  history.push(`/play/`)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const params = useParams<RoomParams>()
+    const roomId = params.id
+    await  history.push(`/play/${roomId}`)
   }
 
   async function exit() {

@@ -17,7 +17,7 @@ export function Play() {
   const params = useParams<RoomParams>()
   const [ newQuestion, setNewQuestion ] = useState('')
   const roomId = params.id
-  const { title, questions } = useRoom(roomId)
+  const { questions } = useRoom(roomId)
 
   async function  handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -38,7 +38,7 @@ export function Play() {
       },
     }
 
-    await database.ref(`questions`).push(question)
+    await database.ref(`question `).push(question)
     setNewQuestion('')
 
   }
@@ -100,7 +100,6 @@ Os países mencionados no texto justificam sua pretensão com base na seguinte c
 
       <main className="content">
         <div className="room-title">
-          <h1>Sala {title}</h1>
           { questions.length > 0 &&  <span>{questions.length} pergunta(s)</span> }
         </div>
         <form onSubmit={handleSendQuestion}>
@@ -110,14 +109,6 @@ Os países mencionados no texto justificam sua pretensão com base na seguinte c
           value={newQuestion}
           />
           <div className="form-footer">
-            { user ? (
-              <div className="user-info">
-                <img src={user.avatar} alt={user.name} />
-                <span>{user.name}</span>
-              </div>
-            ) : (
-              <span>Para enviar uma pergunta, <button>faça seu login</button>.</span>
-            ) }
             <Button type="submit" disabled={!user}>Enviar pergunta</Button>
           </div>
         </form>

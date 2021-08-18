@@ -17,7 +17,7 @@ export function AdminRoom() {
   const history = useHistory()
   const params = useParams<RoomParams>()
   const roomId = params.id
-  const { title, questions } = useRoom(roomId)
+  const { questions } = useRoom(roomId)
   
   return (
     <div id="page-room">
@@ -31,7 +31,6 @@ export function AdminRoom() {
 
       <main className="content">
         <div className="room-title">
-          <h1>Sala {title}</h1>
           { questions.length > 0 &&  <span>{questions.length} pergunta(s)</span> }
         </div>
         <div className="question-list">
