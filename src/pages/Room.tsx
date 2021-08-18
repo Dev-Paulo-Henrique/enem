@@ -35,7 +35,7 @@ export function Room() {
           </div>
           <div className="btn">
           <Button onClick={play}>Play</Button>
-          <Button onClick={exit}>Exit</Button>
+          <Button onClick={exit}>Sair</Button>
           <img src={Envelope} alt="Envelope"/>
           <img src={Bell} alt="Bell"/>
           <img src={List} alt="List"/>
