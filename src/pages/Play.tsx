@@ -36,23 +36,11 @@ export function Play() {
         name: user.name,
         avatar: user.avatar
       },
-      isHighLighted: false,
-      isAnswered: false
     }
 
-    await database.ref(`rooms/${roomId}/questions`).push(question)
+    await database.ref(`questions`).push(question)
     setNewQuestion('')
 
-  }
-
-  async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
-    if(likeId) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
-    }else{
-      await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
-        authorId: user?.id
-      })
-    }
   }
 
   return (
