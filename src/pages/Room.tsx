@@ -17,7 +17,9 @@ export function Room() {
   }
 
   async function exit() {
-    await auth.signOut()
+    auth.signOut().then(() => {
+      console.log('Usuário desconectado')
+    })
     await  history.push('/')
   }
 
