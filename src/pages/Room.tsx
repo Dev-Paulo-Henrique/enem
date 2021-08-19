@@ -4,9 +4,10 @@ import { Button } from '../components/Button';
 import { useHistory } from 'react-router-dom'
 //import Swal from 'sweetalert2'
 import { auth } from '../services/firebase'
-import Envelope from '../assets/images/envelope.svg'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
+
+
 
 export function Room() {
   const history = useHistory()
@@ -15,6 +16,15 @@ export function Room() {
 
   async function play() {
     await  history.push(`/play/`)
+   
+  }
+
+  async function notify() {
+    await  history.push(`/notify/`)
+   
+  }
+  async function menu() {
+    await  history.push(`/menu/`)
    
   }
 
@@ -40,7 +50,6 @@ export function Room() {
           <div className="btn">
           <Button onClick={play}>Play</Button>
           <Button onClick={exit}>Sair</Button>
-          <img src={Envelope} alt="Envelope" onClick={chat}/>
           <img src={Bell} alt="Bell" onClick={notify}/>
           <img src={List} alt="List" onClick={menu}/>
           </div>
