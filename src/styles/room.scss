@@ -98,12 +98,14 @@
           }
         }
         .heart {
+          //display: none;
           margin: 20px;
           background: #F95A2C;
           height: 20px;
           width: 20px;
           transform: rotate(-45deg);
           position: relative;
+          cursor: pointer;
       }
       
       .heart:before,
