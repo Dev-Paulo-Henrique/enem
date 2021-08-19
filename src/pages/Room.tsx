@@ -7,8 +7,6 @@ import { auth } from '../services/firebase'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
 
-
-
 export function Room() {
   const history = useHistory()
   const { user } = useAuth()
