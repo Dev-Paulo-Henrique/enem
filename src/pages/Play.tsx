@@ -12,6 +12,7 @@ type RoomParams = {
   id: string;
 }
 
+
 export function Play() {
   const {user} = useAuth()
   const params = useParams<RoomParams>()
@@ -38,9 +39,9 @@ export function Play() {
       },
     }
 
+  
     await database.ref(`question `).push(question)
     setNewQuestion('')
-
   }
 
   return (
