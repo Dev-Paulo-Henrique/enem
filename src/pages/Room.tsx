@@ -1,17 +1,11 @@
 import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
-import { ButtonHTMLAttributes } from 'react';
 import { Button } from '../components/Button';
-import { Fav } from '../components/Favorite';
+
 import { useHistory } from 'react-router-dom'
 import { auth } from '../services/firebase'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
-
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  isOutline?: boolean
-}
-
  
 export function Room() {
   const history = useHistory()
@@ -29,17 +23,6 @@ export function Room() {
   }
   async function menu() {
     await  history.push(`/menu/`)
-   
-  }
-
-  async function fav({ isOutline = false, ...props }: ButtonProps) {
-   return (
-    <button
-    className={`button ${isOutline ? 'outlined' : ''}`}
-   {...props}
-   />
-   )
-
    
   }
 
@@ -124,7 +107,6 @@ export function Room() {
       </div>
       <fieldset>
         <ul>
-          <Fav isOutline={false}>
           <li className="main fav">
             <div className="content">
               <div className="together">
@@ -136,7 +118,6 @@ export function Room() {
             <strong className="title">Inglês</strong>
             <p className="text">In ancient Rome, there was the habit of celebrating the birthday of a person. There weren’t parties like we know today, but cakes were prepared and offers were made. Then, the habits of wishing happy birthday, giving gifts and lighting candles became popular as a way to protect the birthday person from devils and ensure good things to the next year in the person’s life. The celebrations only became popular like we know today after fourteen centuries, in a collective festival performed in Germany.</p>
           </li>
-          </Fav>
         </ul>
       </fieldset>
 
