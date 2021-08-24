@@ -1,12 +1,12 @@
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Button } from '../components/Button'
-import '../styles/room.scss'
-import { RoomCode } from '../components/RoomCode'
+import '../styles/admin.scss'
 //import { useAuth } from '../hooks/useAuth'
 import { Question } from '../components/Question'
 import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
+import { FormEvent, useState } from 'react'
 
 type RoomParams = {
   id: string;
@@ -14,38 +14,70 @@ type RoomParams = {
 
 export function AdminRoom() {
   const {user} = useAuth()
-  const history = useHistory()
+  const [newQuestion, setNewQuestion] = useState('')
   const params = useParams<RoomParams>()
   const roomId = params.id
   const { questions } = useRoom(roomId)
+
+  async function handleSendQuestion(event: FormEvent) {
+    event.preventDefault()
+
+    if (newQuestion.trim() === '') {
+      return
+    }
+
+    if (!user) {
+      throw new Error('You must be logged in')
+    }
+
+    const question = {
+      content: newQuestion,
+      author: {
+        name: user.name,
+        avatar: user.avatar
+      },
+    }
+
+
+    await database.ref(`question `).push(question)
+    setNewQuestion('')
+  }
   
   return (
     <div id="page-room">
-      <header>
-        <div className="content">
-          <div>
-          <RoomCode code={roomId}/>
-          </div>
-        </div>
-      </header>
+    <header>
+      <div className="content">
+        <img src='' alt="Letmeask" />
+      </div>
+    </header>
 
-      <main className="content">
-        <div className="room-title">
-          { questions.length > 0 &&  <span>{questions.length} pergunta(s)</span> }
+    <main className="content">
+      <div className="room-title">
+        {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+      </div>
+      <form onSubmit={handleSendQuestion}>
+        <textarea
+          placeholder="O que você quer perguntar?"
+          onChange={event => setNewQuestion(event.target.value)}
+          value={newQuestion}
+        />
+        <div className="form-footer">
+          <Button type="submit" disabled={!user}>Enviar pergunta</Button>
         </div>
-        <div className="question-list">
+      </form>
+      <div className="question-list">
         {questions.map(question => {
           return (
             <Question
-            key={question.id}
-            content={question.content}
-            author={question.author}
+              key={question.id}
+              content={question.content}
+              author={question.author}
             >
             </Question>
           )
         })}
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
+  </div>
   );
 }

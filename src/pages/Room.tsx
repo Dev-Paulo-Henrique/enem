@@ -1,7 +1,7 @@
 import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
-import { useHistory } from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import { auth } from '../services/firebase'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
@@ -9,7 +9,6 @@ import List from '../assets/images/list.svg'
 export function Room() {
   const history = useHistory()
   const { user } = useAuth()
-  
 
   async function play() {
     await  history.push(`/play/`)
@@ -122,4 +121,5 @@ export function Room() {
     </div>
 
   );
+
 }

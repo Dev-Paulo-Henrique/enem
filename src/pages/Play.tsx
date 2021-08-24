@@ -1,48 +1,9 @@
 import '../styles/play.scss'
 import { useAuth } from '../hooks/useAuth'
-import { database } from '../services/firebase'
-import { useParams } from 'react-router-dom'
-import { FormEvent, useState } from 'react'
-import { useRoom } from '../hooks/useRoom'
-import { Question } from '../components/Question'
 import { Button } from '../components/Button'
-import { RoomCode } from '../components/RoomCode'
-
-type RoomParams = {
-  id: string;
-}
-
 
 export function Play() {
   const { user } = useAuth()
-  const params = useParams<RoomParams>()
-  const [newQuestion, setNewQuestion] = useState('')
-  const roomId = params.id
-  const { questions } = useRoom(roomId)
-
-  async function handleSendQuestion(event: FormEvent) {
-    event.preventDefault()
-
-    if (newQuestion.trim() === '') {
-      return
-    }
-
-    if (!user) {
-      throw new Error('You must be logged in')
-    }
-
-    const question = {
-      content: newQuestion,
-      author: {
-        name: user.name,
-        avatar: user.avatar
-      },
-    }
-
-
-    await database.ref(`question `).push(question)
-    setNewQuestion('')
-  }
 
   return (
     <>
@@ -91,42 +52,7 @@ export function Play() {
           </div>
         </main>
       </div>
-      <div id="page-room">
-        <header>
-          <div className="content">
-            <img src='' alt="Letmeask" />
-            <RoomCode code={roomId} />
-          </div>
-        </header>
 
-        <main className="content">
-          <div className="room-title">
-            {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
-          </div>
-          <form onSubmit={handleSendQuestion}>
-            <textarea
-              placeholder="O que você quer perguntar?"
-              onChange={event => setNewQuestion(event.target.value)}
-              value={newQuestion}
-            />
-            <div className="form-footer">
-              <Button type="submit" disabled={!user}>Enviar pergunta</Button>
-            </div>
-          </form>
-          <div className="question-list">
-            {questions.map(question => {
-              return (
-                <Question
-                  key={question.id}
-                  content={question.content}
-                  author={question.author}
-                >
-                </Question>
-              )
-            })}
-          </div>
-        </main>
-      </div>
     </>
   );
 }
