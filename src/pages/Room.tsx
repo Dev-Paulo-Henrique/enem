@@ -1,12 +1,11 @@
 import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
-
 import { useHistory } from 'react-router-dom'
 import { auth } from '../services/firebase'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
- 
+
 export function Room() {
   const history = useHistory()
   const { user } = useAuth()
@@ -120,7 +119,6 @@ export function Room() {
           </li>
         </ul>
       </fieldset>
-
     </div>
 
   );

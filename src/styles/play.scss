@@ -82,6 +82,11 @@
     align-items: start;
     justify-content: space-between;
     padding: 0 20px;
+
+    .button{
+      margin-top: 32px;
+      width: 100%
+    }
     
     .a, .b, .c, .d, .e{
       margin-top: 32px;
