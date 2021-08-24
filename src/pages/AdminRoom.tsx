@@ -47,7 +47,12 @@ export function AdminRoom() {
     <div id="page-room">
     <header>
       <div className="content">
-        <img src='' alt="Letmeask" />
+      {user ? (
+              <div className="user-info">
+                <img src={user.avatar} alt={user.name} />
+                <span>{user.name}</span>
+              </div>
+            ) : ('')}
       </div>
     </header>
 
@@ -56,8 +61,16 @@ export function AdminRoom() {
         {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
       </div>
       <form onSubmit={handleSendQuestion}>
+        <select name="" id="">
+          <option value="">Ciências da Natureza</option>
+          <option value="">Ciências Humanas</option>
+          <option value="">Liguagens, Códigos e suas Tecnologias</option>
+          <option value="">Matemática e suas tecnologias</option>
+          <option value="">Redação</option>
+        </select>
+        <input type="text" placeholder="Digite a matéria"/>
         <textarea
-          placeholder="O que você quer perguntar?"
+          placeholder="O que você quer publicar?"
           onChange={event => setNewQuestion(event.target.value)}
           value={newQuestion}
         />

@@ -44,8 +44,8 @@ export function Room() {
             ) : ('')}
           </div>
           <div className="btn">
-          <Button onClick={play}>Play</Button>
-          <Button onClick={exit}>Sair</Button>
+          <Button onClick={play} disabled={!user}>Play</Button>
+          <Button onClick={exit} disabled={!user}>Sair</Button>
           <img src={Bell} alt="Bell" onClick={notify}/>
           <img src={List} alt="List" onClick={menu}/>
           </div>
