@@ -1,11 +1,11 @@
 import { Button } from '../components/Button'
 import '../styles/admin.scss'
-//import { useAuth } from '../hooks/useAuth'
 import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import { Question } from '../components/Question'
+import {  useHistory } from 'react-router-dom'
 
 export function AdminRoom() {
   const {user} = useAuth()
@@ -13,10 +13,7 @@ export function AdminRoom() {
   const [newType, setNewType] = useState('')
   const [newTitle, setNewTitle] = useState('')
   const { questions } = useRoom()
-
-  async function m(){
-    console.log(questions)
-  }
+  const history = useHistory()
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -38,9 +35,14 @@ export function AdminRoom() {
         avatar: user.avatar
       },
     }
+    const roomRef = database.ref( 'new')
+    const firebaseRoom = await roomRef.push({
+      question
+    })
+    //history.push(`${firebaseRoom.key}`)
+    console.log(firebaseRoom.key)
 
-
-    await database.ref(`question`).push(question)
+    //await database.ref('news').push(question)
     setNewQuestion('')
   }
   
@@ -60,6 +62,7 @@ export function AdminRoom() {
     <main className="content">
       <form onSubmit={handleSendQuestion}>
         <select name={newType} id="" onChange={event => setNewType(event.target.value)} value={newType}>
+          <option value="" disabled={!user}></option>
           <option value="Ciências da Natureza">Ciências da Natureza</option>
           <option value="Ciências Humanas">Ciências Humanas</option>
           <option value="Liguagens, Códigos e suas Tecnologias">Liguagens, Códigos e suas Tecnologias</option>
@@ -84,7 +87,7 @@ export function AdminRoom() {
               />
             )
           })}oi</span>
-          <Button type="submit" disabled={!user} onClick={m}>Enviar pergunta</Button>
+          <Button type="submit" disabled={!user}>Enviar pergunta</Button>
         </div>
       </form>
     </main>

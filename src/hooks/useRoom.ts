@@ -32,7 +32,7 @@ export function useRoom() {
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
 
   useEffect(() => {
-    const roomRef = database.ref(`question`)//`rooms/`${roomId}
+    const roomRef = database.ref('new')//`rooms/`${roomId}
     roomRef.on('value', room => {
       const databaseRoom = room.val()
       const firebaseQuestions: FirebaseQuestions = databaseRoom.questions  ??  {}
@@ -44,8 +44,6 @@ export function useRoom() {
           title: value.title,
           content: value.content,
           author: value.author,
-          likeCount:Object.values(value.likes ?? {}).length,
-          likeId: Object.entries(value.likes ?? {}).find(([key, like]) => like.authorId === user?.id)?.[0],
         }
       })
       setQuestions(parsedQuestion)
