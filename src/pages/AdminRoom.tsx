@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom'
 import { Button } from '../components/Button'
 import '../styles/admin.scss'
 //import { useAuth } from '../hooks/useAuth'
@@ -8,25 +7,15 @@ import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import { Question } from '../components/Question'
 
-type RoomParams = {
-  id: string;
-}
-
 export function AdminRoom() {
   const {user} = useAuth()
   const [newQuestion, setNewQuestion] = useState('')
   const [newType, setNewType] = useState('')
   const [newTitle, setNewTitle] = useState('')
-  const params = useParams<RoomParams>()
-  const roomId = params.id
-  const { questions } = useRoom(roomId)
+  const { questions } = useRoom()
 
   async function m(){
-    console.log(questions.map(question => {
-      return (
-        {questions}
-      )
-    }))
+    console.log(questions)
   }
 
   async function handleSendQuestion(event: FormEvent) {
