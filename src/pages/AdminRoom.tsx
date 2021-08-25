@@ -45,7 +45,7 @@ export function AdminRoom() {
     const firebaseRoom = await roomRef.push({
       question
     })
-    history.push(`${firebaseRoom.key}`)
+    //history.push(`/admin/${firebaseRoom.key}`)
     console.log(firebaseRoom.key)
 
     //await database.ref('news').push(question)
