@@ -38,6 +38,7 @@
           width: 32px;
           height: 32px;
           border-radius: 50%;
+          margin: 10px 0;
         }
 
         span {
@@ -112,5 +113,19 @@
       }
   }
   }
-
+  main.content{
+    margin: 32px;
+    form{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    select, input, textarea{
+      margin: 4px 0;
+      padding: 2px;
+    }
+    textarea{
+      height: 100px;
+    }
+    }
+    }
 }
