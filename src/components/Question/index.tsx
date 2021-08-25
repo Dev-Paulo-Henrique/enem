@@ -3,6 +3,8 @@ import { ReactNode } from 'react'
 import cx from 'classnames'
 
 type QuestionProps = {
+  type: string;
+  title: string;
   content:  string;
   author: {
     name: string;
@@ -13,6 +15,8 @@ type QuestionProps = {
 export function Question({
   content ,
   author,
+  title,
+  type,
   children
 }: QuestionProps) {
   return (

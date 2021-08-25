@@ -6,6 +6,7 @@ import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
+import { Question } from '../components/Question'
 
 type RoomParams = {
   id: string;
@@ -19,6 +20,14 @@ export function AdminRoom() {
   const params = useParams<RoomParams>()
   const roomId = params.id
   const { questions } = useRoom(roomId)
+
+  async function m(){
+    console.log(questions.map(question => {
+      return (
+        {questions}
+      )
+    }))
+  }
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -60,9 +69,6 @@ export function AdminRoom() {
     </header>
 
     <main className="content">
-      <div className="room-title">
-        {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
-      </div>
       <form onSubmit={handleSendQuestion}>
         <select name={newType} id="" onChange={event => setNewType(event.target.value)} value={newType}>
           <option value="Ciências da Natureza">Ciências da Natureza</option>
@@ -78,7 +84,18 @@ export function AdminRoom() {
           value={newQuestion}
         />
         <div className="form-footer">
-          <Button type="submit" disabled={!user}>Enviar pergunta</Button>
+          <span>{questions.map(question => {
+            return(
+              <Question
+              key={question.id}
+              content={question.content}
+              author={question.author}
+              type={question.type}
+              title={question.title}
+              />
+            )
+          })}oi</span>
+          <Button type="submit" disabled={!user} onClick={m}>Enviar pergunta</Button>
         </div>
       </form>
     </main>
