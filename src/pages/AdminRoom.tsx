@@ -68,7 +68,7 @@ export function AdminRoom() {
           <option value="">Matemática e suas tecnologias</option>
           <option value="">Redação</option>
         </select>
-        <input type="text" placeholder="Digite a matéria"/>
+        <input type="text" placeholder="Digite o nome da matéria"/>
         <textarea
           placeholder="O que você quer publicar?"
           onChange={event => setNewQuestion(event.target.value)}
