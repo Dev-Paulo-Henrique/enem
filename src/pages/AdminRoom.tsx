@@ -15,6 +15,8 @@ type RoomParams = {
 export function AdminRoom() {
   const {user} = useAuth()
   const [newQuestion, setNewQuestion] = useState('')
+  const [newType, setNewType] = useState('')
+  const [newTitle, setNewTitle] = useState('')
   const params = useParams<RoomParams>()
   const roomId = params.id
   const { questions } = useRoom(roomId)
@@ -31,6 +33,8 @@ export function AdminRoom() {
     }
 
     const question = {
+      type: newType,
+      title: newTitle,
       content: newQuestion,
       author: {
         name: user.name,
@@ -39,7 +43,7 @@ export function AdminRoom() {
     }
 
 
-    await database.ref(`question `).push(question)
+    await database.ref(`question`).push(question)
     setNewQuestion('')
   }
   
@@ -61,14 +65,14 @@ export function AdminRoom() {
         {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
       </div>
       <form onSubmit={handleSendQuestion}>
-        <select name="" id="">
-          <option value="">Ciências da Natureza</option>
-          <option value="">Ciências Humanas</option>
-          <option value="">Liguagens, Códigos e suas Tecnologias</option>
-          <option value="">Matemática e suas tecnologias</option>
-          <option value="">Redação</option>
+        <select name={newType} id="" onChange={event => setNewType(event.target.value)} value={newType}>
+          <option value="Ciências da Natureza">Ciências da Natureza</option>
+          <option value="Ciências Humanas">Ciências Humanas</option>
+          <option value="Liguagens, Códigos e suas Tecnologias">Liguagens, Códigos e suas Tecnologias</option>
+          <option value="Matemática e suas tecnologias">Matemática e suas tecnologias</option>
+          <option value="Redação">Redação</option>
         </select>
-        <input type="text" placeholder="Digite o nome da matéria"/>
+        <input type="text" placeholder="Dê um título" onChange={event => setNewTitle(event.target.value)} value={newTitle}/>
         <textarea
           placeholder="O que você quer publicar?"
           onChange={event => setNewQuestion(event.target.value)}
@@ -78,18 +82,6 @@ export function AdminRoom() {
           <Button type="submit" disabled={!user}>Enviar pergunta</Button>
         </div>
       </form>
-      <div className="question-list">
-        {questions.map(question => {
-          return (
-            <Question
-              key={question.id}
-              content={question.content}
-              author={question.author}
-            >
-            </Question>
-          )
-        })}
-      </div>
     </main>
   </div>
   );

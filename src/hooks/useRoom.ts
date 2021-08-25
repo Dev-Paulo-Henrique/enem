@@ -21,6 +21,8 @@ type QuestionType = {
     name: string;
     avatar: string;
   }
+  type: string;
+  title: string;
   content: string;
   likeCount: number;
   likeId: string | undefined;
@@ -32,7 +34,7 @@ export function useRoom(roomId: string) {
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
 
   useEffect(() => {
-    const roomRef = database.ref(`questions`)//`rooms/`${roomId}
+    const roomRef = database.ref(`question`)//`rooms/`${roomId}
     roomRef.on('value', room => {
       const databaseRoom = room.val()
       const firebaseQuestions: FirebaseQuestions = databaseRoom.questions  ??  {}
@@ -40,6 +42,8 @@ export function useRoom(roomId: string) {
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
+          type: value.type,
+          title: value.title,
           content: value.content,
           author: value.author,
           likeCount:Object.values(value.likes ?? {}).length,
