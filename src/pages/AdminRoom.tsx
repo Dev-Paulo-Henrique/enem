@@ -5,14 +5,20 @@ import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import { Question } from '../components/Question'
-import {  useHistory } from 'react-router-dom'
+import {  useHistory, useParams } from 'react-router-dom'
+
+type RoomParams = {
+  id: string;
+}
 
 export function AdminRoom() {
   const {user} = useAuth()
   const [newQuestion, setNewQuestion] = useState('')
   const [newType, setNewType] = useState('')
   const [newTitle, setNewTitle] = useState('')
-  const { questions } = useRoom()
+  const params = useParams<RoomParams>()
+  const roomId = params.id
+  const { questions } = useRoom(roomId)
   const history = useHistory()
 
   async function handleSendQuestion(event: FormEvent) {
@@ -39,7 +45,7 @@ export function AdminRoom() {
     const firebaseRoom = await roomRef.push({
       question
     })
-    //history.push(`${firebaseRoom.key}`)
+    history.push(`${firebaseRoom.key}`)
     console.log(firebaseRoom.key)
 
     //await database.ref('news').push(question)
@@ -80,14 +86,14 @@ export function AdminRoom() {
           <span>{questions.map(question => {
             return(
               <Question
-              key={question.id}
-              content={question.content}
-              author={question.author}
-              type={question.type}
-              title={question.title}
-              />
+            key={question.id}
+            content={question.content}
+            author={question.author}
+            type={question.type}
+            title={question.title}
+            >oi</Question>
             )
-          })}{}</span>
+          })}oi</span>
           <Button type="submit" disabled={!user}>Enviar pergunta</Button>
         </div>
       </form>

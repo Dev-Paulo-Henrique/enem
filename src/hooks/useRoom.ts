@@ -10,9 +10,6 @@ type FirebaseQuestions = Record<string, {
   type: string;
   title: string;
   content: string;
-  likes: Record<string, {
-    authorId: string;
-  }>
 }>
 
 type QuestionType = {
@@ -27,13 +24,13 @@ type QuestionType = {
 }
 
 
-export function useRoom() {
+export function useRoom(roomId: string) {
   const { user } =  useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
   const [ title, setTitle ] = useState('')
 
   useEffect(() => {
-    const roomRef = database.ref('new')//`rooms/`${roomId}
+    const roomRef = database.ref(`/admin/${roomId}`)//`rooms/`${roomId}
     roomRef.on('value', room => {
       const databaseRoom = room.val()
       const firebaseQuestions: FirebaseQuestions = databaseRoom.questions  ??  {}
@@ -53,7 +50,7 @@ export function useRoom() {
     return () => {
       roomRef.off('value')
     }
-  }, [ user?.id])
+  }, [ roomId, user?.id])
 
   return { questions, title }
 }

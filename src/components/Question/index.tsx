@@ -22,7 +22,7 @@ export function Question({
   return (
     <div 
       className={cx(
-        'question'
+        'new'
       )}
       >
       <p>{content}</p>
@@ -30,6 +30,8 @@ export function Question({
         <div className="user-info">
           <img src={author.avatar} alt={author.name} />
           <span>{author.name}</span>
+          <span>{title}</span>
+          <span>{type}</span>
         </div>
         <div>
           { children }
