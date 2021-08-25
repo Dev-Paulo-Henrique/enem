@@ -18,7 +18,7 @@ export function AdminRoom() {
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
 
-    if (newQuestion.trim() === '') {
+    if (newQuestion.trim() === '' || newType.trim() === '' || newTitle.trim() === '') {
       return
     }
 
@@ -44,6 +44,7 @@ export function AdminRoom() {
 
     //await database.ref('news').push(question)
     setNewQuestion('')
+    setNewTitle('')
   }
   
   return (
@@ -86,7 +87,7 @@ export function AdminRoom() {
               title={question.title}
               />
             )
-          })}oi</span>
+          })}{}</span>
           <Button type="submit" disabled={!user}>Enviar pergunta</Button>
         </div>
       </form>
