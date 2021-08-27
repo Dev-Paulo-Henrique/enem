@@ -35,6 +35,7 @@ export function useRoom() {
       })
       setTitle(databaseRoom.title)
       setQuestions(parsedQuestion)
+      console.log(databaseRoom)
     })
     return () => {
       roomRef.off('value')
