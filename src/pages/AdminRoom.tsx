@@ -83,18 +83,8 @@ export function AdminRoom() {
           value={newQuestion}
         />
         <div className="form-footer">
-          <span>{questions.map(question => {
-            return(
-              <Question
-            key={question.id}
-            content={question.content}
-            author={question.author}
-            type={question.type}
-            title={question.title}
-            >oi</Question>
-            )
-          })}oi</span>
-          <Button type="submit" disabled={!user}>Enviar pergunta</Button>
+          <span>{`Deseja publicar isso ${user?.name.split(" ").shift()}?`}</span>
+          <Button type="submit" disabled={!user}>Publicar</Button>
         </div>
       </form>
     </main>
