@@ -30,7 +30,7 @@ export function useRoom(roomId: string) {
   const [ title, setTitle ] = useState('')
 
   useEffect(() => {
-    const roomRef = database.ref(`new`)//`rooms/`${roomId}
+    const roomRef = database.ref(`${user?.id}`)//criar outra camada
     roomRef.on('value', room => {
       const databaseRoom = room.val()
       const firebaseQuestions: FirebaseQuestions = databaseRoom.questions  ??  {}

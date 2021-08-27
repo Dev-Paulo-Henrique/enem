@@ -4,6 +4,7 @@ import gif from '../assets/images/animation_500_kry1cpvo.gif'
 import googleIconImg from '../assets/images/google-icon.svg'
 import '../styles/auth.scss'
 import { useAuth } from '../hooks/useAuth'
+import { database } from '../services/firebase'
 
 export function Home() {
   const history = useHistory();
@@ -11,6 +12,9 @@ export function Home() {
 
 
   async function handleCreateRoom() {
+    const createAdmin = database.ref(`${user?.id}/admin`)
+    const create = createAdmin.set(`${user?.name}`)
+    //console.log(createAdmin.key, create)
     if(!user) {
       await signInWithGogle()
     }

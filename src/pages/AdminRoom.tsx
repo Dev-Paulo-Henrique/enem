@@ -41,7 +41,7 @@ export function AdminRoom() {
         avatar: user.avatar
       },
     }
-    const roomRef = database.ref( 'new')
+    const roomRef = database.ref(`${user?.id}`)
     const firebaseRoom = await roomRef.push({
       question
     })
