@@ -1,6 +1,6 @@
 import { Button } from '../components/Button'
 import '../styles/admin.scss'
-import { useRoom } from '../hooks/useRoom'
+//import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
@@ -16,10 +16,10 @@ export function AdminRoom() {
   const [newQuestion, setNewQuestion] = useState('')
   const [newType, setNewType] = useState('')
   const [newTitle, setNewTitle] = useState('')
-  const params = useParams<RoomParams>()
-  const roomId = params.id
-  const { questions } = useRoom(roomId)
-  const history = useHistory()
+  //const params = useParams<RoomParams>()
+  //const roomId = params.id
+  //const { questions } = useRoom(roomId)
+  //const history = useHistory()
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -32,7 +32,7 @@ export function AdminRoom() {
       throw new Error('You must be logged in')
     }
 
-    const question = {
+    const newInfo = {
       type: newType,
       title: newTitle,
       content: newQuestion,
@@ -43,7 +43,7 @@ export function AdminRoom() {
     }
     const roomRef = database.ref(`${user?.id}`)
     const firebaseRoom = await roomRef.push({
-      question
+      newInfo
     })
     //history.push(`/admin/${firebaseRoom.key}`)
     console.log(firebaseRoom.key)
@@ -69,7 +69,7 @@ export function AdminRoom() {
     <main className="content">
       <form onSubmit={handleSendQuestion}>
         <select name={newType} id="" onChange={event => setNewType(event.target.value)} value={newType}>
-          <option value="" disabled={!user}></option>
+          <option value="" disabled selected>Selecione...</option>
           <option value="Ciências da Natureza">Ciências da Natureza</option>
           <option value="Ciências Humanas">Ciências Humanas</option>
           <option value="Liguagens, Códigos e suas Tecnologias">Liguagens, Códigos e suas Tecnologias</option>
