@@ -4,7 +4,7 @@ import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
-import { Question } from '../components/Question'
+import Public from '../assets/images/public.gif'
 import {  useHistory, useParams } from 'react-router-dom'
 
 type RoomParams = {
@@ -49,6 +49,7 @@ export function AdminRoom() {
     console.log(firebaseRoom.key)
 
     //await database.ref('news').push(question)
+    //<img src={Public} alt="Publication" />
     setNewQuestion('')
     setNewTitle('')
   }
@@ -87,6 +88,7 @@ export function AdminRoom() {
           <Button type="submit" disabled={!user}>Publicar</Button>
         </div>
       </form>
+      
     </main>
   </div>
   );
