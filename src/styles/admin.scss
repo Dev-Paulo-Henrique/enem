@@ -52,6 +52,12 @@
   }
   main.content{
     margin: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img{
+      margin-top: -16px;
+    }
     form{
     display: flex;
     flex-direction: column;

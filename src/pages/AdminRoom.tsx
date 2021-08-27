@@ -49,7 +49,6 @@ export function AdminRoom() {
     console.log(firebaseRoom.key)
 
     //await database.ref('news').push(question)
-    //<img src={Public} alt="Publication" />
     setNewQuestion('')
     setNewTitle('')
   }
@@ -88,7 +87,7 @@ export function AdminRoom() {
           <Button type="submit" disabled={!user}>Publicar</Button>
         </div>
       </form>
-      
+      <img src={Public} alt="Publication" />
     </main>
   </div>
   );
