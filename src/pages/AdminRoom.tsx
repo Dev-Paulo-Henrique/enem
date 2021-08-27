@@ -5,11 +5,11 @@ import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import Public from '../assets/images/public.gif'
-import {  useHistory, useParams } from 'react-router-dom'
+//import {  useHistory, useParams } from 'react-router-dom'
 
-type RoomParams = {
-  id: string;
-}
+//type RoomParams = {
+//  id: string;
+//}
 
 export function AdminRoom() {
   const {user} = useAuth()
@@ -32,21 +32,12 @@ export function AdminRoom() {
       throw new Error('You must be logged in')
     }
 
-    const newInfo = {
-      type: newType,
+    const roomRef = database.ref(`${user?.id}/${newType}`)
+    await roomRef.push({
       title: newTitle,
       content: newQuestion,
-      author: {
-        name: user.name,
-        avatar: user.avatar
-      },
-    }
-    const roomRef = database.ref(`${user?.id}`)
-    const firebaseRoom = await roomRef.push({
-      newInfo
     })
     //history.push(`/admin/${firebaseRoom.key}`)
-    console.log(firebaseRoom.key)
 
     //await database.ref('news').push(question)
     setNewQuestion('')
@@ -65,7 +56,7 @@ export function AdminRoom() {
             ) : ('')}
       </div>
     </header>
-
+<h1>{database.ref(`${user?.id}`).key}</h1>
     <main className="content">
       <form onSubmit={handleSendQuestion}>
         <select name={newType} id="" onChange={event => setNewType(event.target.value)} value={newType}>

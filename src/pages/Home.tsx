@@ -12,7 +12,11 @@ export function Home() {
 
 
   async function handleCreateRoom() {
-   database.ref(`${user?.id}/admin`).set(`${user?.name}`)
+   database.ref(`${user?.id}/admin`).set({
+     Name: user?.name,
+     Id: user?.id,
+     Photo: user?.avatar
+   })
     if(!user) {
       await signInWithGogle()
     }

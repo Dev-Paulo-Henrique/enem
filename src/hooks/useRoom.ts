@@ -3,28 +3,18 @@ import { database } from '../services/firebase'
 import { useAuth } from './useAuth'
 
 type FirebaseQuestions = Record<string, {
-  author: {
-    name: string;
-    avatar: string;
-  }
-  type: string;
   title: string;
   content: string;
 }>
 
 type QuestionType = {
   id: string;
-  author: {
-    name: string;
-    avatar: string;
-  }
-  type: string;
   title: string;
   content: string;
 }
 
 
-export function useRoom(roomId: string) {
+export function useRoom() {
   const { user } =  useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
   const [ title, setTitle ] = useState('')
@@ -39,10 +29,8 @@ export function useRoom(roomId: string) {
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
-          type: value.type,
           title: value.title,
           content: value.content,
-          author: value.author,
         }
       })
       setTitle(databaseRoom.title)
@@ -51,7 +39,7 @@ export function useRoom(roomId: string) {
     return () => {
       roomRef.off('value')
     }
-  }, [ roomId, user?.id])
+  }, [ user?.id])
 
   return { questions, title }
 }
