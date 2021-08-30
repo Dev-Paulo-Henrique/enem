@@ -2,7 +2,7 @@ import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
 import { useHistory} from 'react-router-dom'
-import { auth } from '../services/firebase'
+//import { auth } from '../services/firebase'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
 
@@ -12,24 +12,25 @@ export function Room() {
 
   async function play() {
     await  history.push(`/play/`)
-   
   }
 
   async function notify() {
     await  history.push(`/notify/`)
-   
   }
   async function menu() {
     await  history.push(`/menu/`)
-   
   }
 
-  async function exit() {
-    auth.signOut().then(() => {
-      console.log('Usuário desconectado')
-    })
-    await  history.push('/')
+  async function admin() {
+    await  history.push(`/admin/`)
   }
+
+  //async function exit() {
+  //  auth.signOut().then(() => {
+  //   console.log('Usuário desconectado')
+  //  })
+  // await  history.push('/')
+  //}
 
   return (
     <div id="page-room">
@@ -45,7 +46,8 @@ export function Room() {
           </div>
           <div className="btn">
           <Button onClick={play} disabled={!user}>Play</Button>
-          <Button onClick={exit} disabled={!user}>Sair</Button>
+          
+          <Button onClick={admin} disabled={!user}>Publish</Button>
           <img src={Bell} alt="Bell" onClick={notify}/>
           <img src={List} alt="List" onClick={menu}/>
           </div>
