@@ -13,7 +13,6 @@ type QuestionType = {
   content: string;
 }
 
-
 export function useRoom() {
   const { user } =  useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
