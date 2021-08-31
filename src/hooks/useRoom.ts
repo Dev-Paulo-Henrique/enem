@@ -19,7 +19,7 @@ export function useRoom() {
   const [ title, setTitle ] = useState('')
 
   useEffect(() => {
-    const roomRef = database.ref(`${user?.id}`)//criar outra camada
+    const roomRef = database.ref(`${user?.name}`)//criar outra camada
     console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
@@ -34,12 +34,14 @@ export function useRoom() {
       })
       setTitle(databaseRoom.title)
       setQuestions(parsedQuestion)
-      console.log(databaseRoom)
+      console.log(databaseRoom.admin.Photo)
+     //return console.log(JSON.stringify({databaseRoom}))
     })
     return () => {
       roomRef.off('value')
+      //console.log(roomRef)
     }
-  }, [ user?.id])
+  }, [ user?.name])
 
   return { questions, title }
 }

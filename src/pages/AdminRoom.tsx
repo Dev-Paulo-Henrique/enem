@@ -27,7 +27,7 @@ export function AdminRoom() {
       throw new Error('You must be logged in')
     }
 
-    const roomRef = database.ref(`${user?.id}/${newType}`)
+    const roomRef = database.ref(`${user?.name}/${newType}`)
     await roomRef.push({
       title: newTitle,
       content: newQuestion,

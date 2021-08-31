@@ -4,22 +4,15 @@ import gif from '../assets/images/animation_500_kry1cpvo.gif'
 import googleIconImg from '../assets/images/google-icon.svg'
 import '../styles/auth.scss'
 import { useAuth } from '../hooks/useAuth'
-import { database } from '../services/firebase'
 
 export function Home() {
   const history = useHistory();
   const { user, signInWithGogle } = useAuth()
 
-
   async function handleCreateRoom() {
     if(!user) {
       await signInWithGogle()
     }
-    database.ref(`${user?.id}`).set({
-      Name: user?.name,
-      Id: user?.id,
-      Photo: user?.avatar
-    })
     await history.push('/main/')
   }
 
