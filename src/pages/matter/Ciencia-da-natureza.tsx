@@ -4,8 +4,6 @@ import { useAuth } from '../../hooks/useAuth'
 import { Button } from '../../components/Button';
 import { useHistory} from 'react-router-dom'
 import { auth, database } from '../../services/firebase'
-import Bell from '../../assets/images/bell.svg'
-import List from '../../assets/images/list.svg'
 import { useEffect, useState } from 'react';
 
 type FirebaseQuestions = Record<string, {
@@ -25,14 +23,15 @@ export function CN() {
   const { user } = useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
   const [ title, setTitle ] = useState('')
+  const name = "Liguagens, Códigos e suas Tecnologias"
 
   useEffect(() => {
-    const roomRef = database.ref(`${user?.name}/matter/`)//criar outra camada
+    const roomRef = database.ref(`${user?.name}/matter/${name}`)//criar outra camada
     //console.log(roomRef.key)
+    if(roomRef.key === name){
     roomRef.on('value', room => {
       const databaseRoom = room.val()
       const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
-      
 
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
@@ -44,25 +43,15 @@ export function CN() {
       //console.log(parsedQuestion)
       setTitle(databaseRoom.title)
       setQuestions(parsedQuestion)
-      console.log(databaseRoom.admin)
+      console.log(databaseRoom)
      //return console.log(JSON.stringify({databaseRoom}))
-    })
+    })}
     return () => {
       roomRef.off('value')
       //console.log(roomRef)
     }
   }, [ user?.name])
-
-  async function play() {
-    await  history.push(`/play/`)
-  }
-
-  async function notify() {
-    await  history.push(`/notify/`)
-  }
-  async function menu() {
-    await  history.push(`/menu/`)
-  }
+  
 
   async function admin() {
     await database.ref(`${user?.name}`).set({
@@ -95,11 +84,8 @@ export function CN() {
             ) : ('')}
           </div>
           <div className="btn">
-          <Button onClick={play} disabled={!user}>Play</Button>
           <Button onClick={exit} disabled={!user}>Sair</Button>
-          <Button onClick={admin} disabled={!user}>Publish</Button>
-          <img src={Bell} alt="Bell" onClick={notify}/>
-          <img src={List} alt="List" onClick={menu}/>
+          <Button onClick={admin} disabled={!user}>Publish</Button> 
           </div>
         </div>
       </header>
@@ -161,11 +147,7 @@ export function CN() {
             <div className="content">
               <div className="together">
               <div className="background"></div>
-            <h1 className="type">{questions.map(question => {
-              return (
-                <p></p>
-              )
-            })}</h1>
+            <h1 className="type">{database.ref(`${user?.name}/matter/${name}`).key}</h1>
               </div>
             <div className="heart" id="heart"></div>
             </div>
@@ -173,9 +155,15 @@ export function CN() {
               return(
                 <p>{question.id}</p>
               )
-            })}</strong>
+            })}{questions.length}</strong>
             <p className="text">In ancient Rome, there was the habit of celebrating the birthday of a person. There weren’t parties like we know today, but cakes were prepared and offers were made. Then, the habits of wishing happy birthday, giving gifts and lighting candles became popular as a way to protect the birthday person from devils and ensure good things to the next year in the person’s life. The celebrations only became popular like we know today after fourteen centuries, in a collective festival performed in Germany.</p>
+            <span>Id de pergunta: {questions.map(question => {
+              return(
+                <a>{question.id}</a>
+              )
+            })}</span>
           </li>
+          
         </ul>
       </fieldset>
     </div>

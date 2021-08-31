@@ -23,7 +23,7 @@ export function useRoom() {
     //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions  ??  {}
+      const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
 
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
@@ -34,7 +34,7 @@ export function useRoom() {
       })
       setTitle(databaseRoom.title)
       setQuestions(parsedQuestion)
-      console.log(databaseRoom.admin.Photo)
+      console.log(databaseRoom)
      //return console.log(JSON.stringify({databaseRoom}))
     })
     return () => {

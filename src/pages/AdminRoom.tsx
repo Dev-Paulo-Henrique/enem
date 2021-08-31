@@ -1,6 +1,6 @@
 import { Button } from '../components/Button'
 import '../styles/admin.scss'
-import { useRoom } from '../hooks/useRoom'
+//import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
@@ -13,7 +13,7 @@ export function AdminRoom() {
   const [newQuestion, setNewQuestion] = useState('')
   const [newType, setNewType] = useState('')
   const [newTitle, setNewTitle] = useState('')
-  const { questions } = useRoom()
+  //const { questions } = useRoom()
   //const history = useHistory()
 
   async function handleSendQuestion(event: FormEvent) {
@@ -28,7 +28,7 @@ export function AdminRoom() {
     }
 
     const roomRef = database.ref(`${user?.name}/matter/${newType}/`)
-    await roomRef.push({
+    await roomRef.set({
       title: newTitle,
       content: newQuestion,
     })
@@ -51,7 +51,6 @@ export function AdminRoom() {
             ) : ('')}
       </div>
     </header>
-<h1>{questions}</h1>
     <main className="content">
       <form onSubmit={handleSendQuestion}>
         <select name={newType} id="" onChange={event => setNewType(event.target.value)} value={newType}>

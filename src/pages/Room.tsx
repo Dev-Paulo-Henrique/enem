@@ -25,7 +25,6 @@ export function Room() {
   const history = useHistory()
   const { user } = useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
-  const [ title, setTitle ] = useState('')
 
   useEffect(() => {
     const roomRef = database.ref(`${user?.name}/matter/`)//criar outra camada
@@ -43,9 +42,8 @@ export function Room() {
         }
       })
       //console.log(parsedQuestion)
-      setTitle(databaseRoom.title)
       setQuestions(parsedQuestion)
-      console.log(databaseRoom.admin)
+      //console.log(databaseRoom.admin)
      //return console.log(JSON.stringify({databaseRoom}))
     })
     return () => {
