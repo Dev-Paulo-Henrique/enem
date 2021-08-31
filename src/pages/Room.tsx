@@ -1,14 +1,57 @@
 import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
+//import { useRoom } from '../hooks/useRoom'
 import { Button } from '../components/Button';
 import { useHistory} from 'react-router-dom'
 import { auth, database } from '../services/firebase'
 import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
+import { useEffect, useState } from 'react';
+
+type FirebaseQuestions = Record<string, {
+  Id: string;
+  Photo: string;
+}>
+
+type QuestionType = {
+  id: string;
+  title: string;
+  content: string;
+}
+
 
 export function Room() {
   const history = useHistory()
   const { user } = useAuth()
+  const [ questions, setQuestions ] = useState<QuestionType[]>([])
+  const [ title, setTitle ] = useState('')
+
+  useEffect(() => {
+    const roomRef = database.ref(`${user?.name}`)//criar outra camada
+    //console.log(roomRef.key)
+    roomRef.on('value', room => {
+      const databaseRoom = room.val()
+      const firebaseQuestions: FirebaseQuestions = databaseRoom.admin  ??  {}
+      
+
+      const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
+        return {
+          id: key,
+          title: value.Id,
+          content: value.Photo,
+        }
+      })
+      //console.log(parsedQuestion)
+      setTitle(databaseRoom.title)
+      setQuestions(parsedQuestion)
+      console.log(databaseRoom.admin)
+     //return console.log(JSON.stringify({databaseRoom}))
+    })
+    return () => {
+      roomRef.off('value')
+      //console.log(roomRef)
+    }
+  }, [ user?.name])
 
   async function play() {
     await  history.push(`/play/`)
@@ -122,7 +165,11 @@ export function Room() {
               </div>
             <div className="heart" id="heart"></div>
             </div>
-            <strong className="title">Inglês</strong>
+            <strong className="title">{questions.map(question => {
+              return (
+                <p>{question.id}</p>
+              )
+            })}</strong>
             <p className="text">In ancient Rome, there was the habit of celebrating the birthday of a person. There weren’t parties like we know today, but cakes were prepared and offers were made. Then, the habits of wishing happy birthday, giving gifts and lighting candles became popular as a way to protect the birthday person from devils and ensure good things to the next year in the person’s life. The celebrations only became popular like we know today after fourteen centuries, in a collective festival performed in Germany.</p>
           </li>
         </ul>
