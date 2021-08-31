@@ -19,7 +19,7 @@ export function useRoom() {
   const [ title, setTitle ] = useState('')
 
   useEffect(() => {
-    const roomRef = database.ref(`${user?.name}`)//criar outra camada
+    const roomRef = database.ref(`${user?.name}/matter/`)//criar outra camada
     //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()

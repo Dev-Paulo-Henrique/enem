@@ -27,11 +27,11 @@ export function Room() {
   const [ title, setTitle ] = useState('')
 
   useEffect(() => {
-    const roomRef = database.ref(`${user?.name}`)//criar outra camada
+    const roomRef = database.ref(`${user?.name}/matter/`)//criar outra camada
     //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.admin  ??  {}
+      const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
       
 
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
@@ -161,15 +161,15 @@ export function Room() {
             <div className="content">
               <div className="together">
               <div className="background"></div>
-            <h1 className="type">Linguagens, Códigos e suas Tecnologias</h1>
-              </div>
-            <div className="heart" id="heart"></div>
-            </div>
-            <strong className="title">{questions.map(question => {
+            <h1 className="type">{questions.map(question => {
               return (
                 <p>{question.id}</p>
               )
-            })}</strong>
+            })}</h1>
+              </div>
+            <div className="heart" id="heart"></div>
+            </div>
+            <strong className="title">ingles {questions.length}</strong>
             <p className="text">In ancient Rome, there was the habit of celebrating the birthday of a person. There weren’t parties like we know today, but cakes were prepared and offers were made. Then, the habits of wishing happy birthday, giving gifts and lighting candles became popular as a way to protect the birthday person from devils and ensure good things to the next year in the person’s life. The celebrations only became popular like we know today after fourteen centuries, in a collective festival performed in Germany.</p>
           </li>
         </ul>
