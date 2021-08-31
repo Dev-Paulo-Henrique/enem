@@ -1,13 +1,12 @@
-import '../styles/room.scss'
-import { useAuth } from '../hooks/useAuth'
+import '../../styles/room.scss'
+import { useAuth } from '../../hooks/useAuth'
 //import { useRoom } from '../hooks/useRoom'
-import { Button } from '../components/Button';
+import { Button } from '../../components/Button';
 import { useHistory} from 'react-router-dom'
-import { auth, database } from '../services/firebase'
-import Bell from '../assets/images/bell.svg'
-import List from '../assets/images/list.svg'
+import { auth, database } from '../../services/firebase'
+import Bell from '../../assets/images/bell.svg'
+import List from '../../assets/images/list.svg'
 import { useEffect, useState } from 'react';
-import { Question } from '../components/Question';
 
 type FirebaseQuestions = Record<string, {
   Id: string;
@@ -21,7 +20,7 @@ type QuestionType = {
 }
 
 
-export function Room() {
+export function CN() {
   const history = useHistory()
   const { user } = useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
@@ -164,12 +163,7 @@ export function Room() {
               <div className="background"></div>
             <h1 className="type">{questions.map(question => {
               return (
-                <Question
-            key={question.id}
-            content={question.content}
-            title={question.title}
-            >
-            </Question>
+                <p></p>
               )
             })}</h1>
               </div>
