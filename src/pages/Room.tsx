@@ -4,7 +4,6 @@ import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
 import { useHistory} from 'react-router-dom'
 import { auth, database } from '../services/firebase'
-import List from '../assets/images/list.svg'
 import { useEffect, useState } from 'react';
 
 type FirebaseQuestions = Record<string, {

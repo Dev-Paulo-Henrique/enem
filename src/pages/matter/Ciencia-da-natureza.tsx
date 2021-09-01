@@ -26,7 +26,9 @@ export function CN() {
   const name = "Ciências da Natureza"
 
   useEffect(() => {
-    const roomRef = database.ref(`${user?.name}/matter/${name}`)
+    const roomRef = database.ref(`${user?.name}/matter/${name}`)//criar outra camada
+    //console.log(roomRef.key)
+    //console.log(roomRef.parent)
     if(roomRef.key === name){
     roomRef.on('value', room => {
       const databaseRoom = room.val()
@@ -41,6 +43,7 @@ export function CN() {
           type: value.type
         }
       })
+      //console.log(parsedQuestion)
       setQuestions(parsedQuestion)
     })}
     roomRef.on('child_added', room => {
@@ -55,11 +58,13 @@ export function CN() {
           type: value.type
         }
       })
+      //console.log(parsedQuestion)
       setQuestions(parsedQuestion)
       console.log(databaseRoom.title)
     })
     return () => {
       roomRef.off('value')
+      //console.log(roomRef)
     }
   }, [ user?.name])
 

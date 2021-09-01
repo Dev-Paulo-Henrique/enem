@@ -1,6 +1,8 @@
 import './styles.scss' 
 import { ReactNode } from 'react'
 import Swal from 'sweetalert2'
+import { database } from '../../services/firebase'
+import { useAuth } from '../../hooks/useAuth'
 
 type QuestionProps = {
   content:  string;
@@ -15,8 +17,11 @@ export function Question({
   title,
   id,
 }: QuestionProps) {
-  const fav = document.getElementById('heart')
-  async function double() {
+  const {user} = useAuth()
+  async function fav() {
+    await database.ref(`${user?.name}/fav`).push({
+      id
+    })
     Swal.fire({
       title: 'Adicionado aos favoritos',
       showConfirmButton: false,
@@ -31,7 +36,7 @@ export function Question({
               <div className="together">
             <h1 className="type">{type}</h1>
               </div>
-            <div className="heart" id="heart" onClick={double}></div>
+            <div className="heart" id="heart" onClick={fav}></div>
             </div>
             <strong className="title">{title}</strong>
             <p className="text">{content}</p>
