@@ -1,5 +1,6 @@
 import './styles.scss' 
 import { ReactNode } from 'react'
+import Swal from 'sweetalert2'
 
 type QuestionProps = {
   content:  string;
@@ -14,15 +15,23 @@ export function Question({
   title,
   id,
 }: QuestionProps) {
+  const fav = document.getElementById('heart')
+  async function double() {
+    Swal.fire({
+      title: 'Adicionado aos favoritos',
+      showConfirmButton: false,
+      icon: 'success',
+      timer: 1000,
+    })
+  }
   return (
     <ul>
           <li className="main fav">
             <div className="content">
               <div className="together">
-              <div className="background"></div>
             <h1 className="type">{type}</h1>
               </div>
-            <div className="heart" id="heart"></div>
+            <div className="heart" id="heart" onClick={double}></div>
             </div>
             <strong className="title">{title}</strong>
             <p className="text">{content}</p>
