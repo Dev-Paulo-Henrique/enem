@@ -24,7 +24,6 @@ export function CH() {
   const { user } = useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
   const name = "Ciências Humanas"
-  alert('oi')
   useEffect(() => {
     const roomRef = database.ref(`${user?.name}/matter/${name}`)//criar outra camada
     console.log(roomRef.key)
@@ -92,15 +91,15 @@ export function CH() {
               </a>
               </div>
               <div className="content">
-              <div className="background two"></div>
-            <a href="/matter/ciencias-da-natureza">
-              Ciências Humanas
-              </a>
-              </div>
-              <div className="content">
               <div className="background three"></div>
             <a href="/matter/liguagens-codigos-e-suas-tecnologias">
               Liguagens, Códigos e suas Tecnologias
+              </a>
+              </div>
+              <div className="content">
+              <div className="background two"></div>
+            <a href="/matter/ciencias-humana">
+              Ciências Humanas
               </a>
               </div>
               <div className="content">

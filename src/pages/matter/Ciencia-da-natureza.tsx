@@ -92,15 +92,15 @@ export function CN() {
               </a>
               </div>
               <div className="content">
-              <div className="background two"></div>
-            <a href="/matter/ciencias-da-natureza">
-              Ciências Humanas
-              </a>
-              </div>
-              <div className="content">
               <div className="background three"></div>
             <a href="/matter/liguagens-codigos-e-suas-tecnologias">
               Liguagens, Códigos e suas Tecnologias
+              </a>
+              </div>
+              <div className="content">
+              <div className="background two"></div>
+            <a href="/matter/ciencias-humana">
+              Ciências Humanas
               </a>
               </div>
               <div className="content">

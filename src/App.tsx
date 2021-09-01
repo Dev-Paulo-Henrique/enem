@@ -18,7 +18,7 @@ function App() {
         <Route path="/play/" exact component={Play}/>
         <Route path="/admin/" exact component={AdminRoom}/>
         <Route path="/matter/ciencias-da-natureza/" exact component={CN}/>
-        <Route path="/matter/ciencia-humana/" exact component={CH}/>
+        <Route path="/matter/ciencias-humana/" exact component={CH}/>
         </Switch>
     </AuthContextProvider>
     </BrowserRouter>
