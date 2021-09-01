@@ -1,9 +1,6 @@
 import '../../styles/room.scss'
 import { useAuth } from '../../hooks/useAuth'
-//import { useRoom } from '../hooks/useRoom'
-import { Button } from '../../components/Button';
-import { useHistory} from 'react-router-dom'
-import { auth, database } from '../../services/firebase'
+import { database } from '../../services/firebase'
 import { useEffect, useState } from 'react';
 import { Question } from '../../components/Question';
 
@@ -24,7 +21,6 @@ type QuestionType = {
 
 
 export function CN() {
-  const history = useHistory()
   const { user } = useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
   const name = "Ciências da Natureza"
@@ -73,25 +69,6 @@ export function CN() {
       //console.log(roomRef)
     }
   }, [ user?.name])
-  
-
-  async function admin() {
-    await database.ref(`${user?.name}`).set({
-      //Name: user?.name,
-      admin:{
-        Id: user?.id,
-        Photo: user?.avatar
-      }
-    })
-    await  history.push(`/admin/`)
-  }
-
-  async function exit() {
-    auth.signOut().then(() => {
-     console.log('Usuário desconectado')
-    })
-   await  history.push('/')
-  }
 
   return (
     <div id="page-room">
@@ -104,10 +81,6 @@ export function CN() {
                 <span>{user.name}</span>
               </div>
             ) : ('')}
-          </div>
-          <div className="btn">
-          <Button onClick={exit} disabled={!user}>Sair</Button>
-          <Button onClick={admin} disabled={!user}>Publish</Button> 
           </div>
         </div>
       </header>

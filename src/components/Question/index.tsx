@@ -26,7 +26,9 @@ export function Question({
             </div>
             <strong className="title">{title}</strong>
             <p className="text">{content}</p>
-            <span className="id">ID da pergunta: <span>{id}</span></span>
+            <span className="id">ID da pergunta: 
+            <span>{id}</span>
+            </span>
           </li>
         </ul>
   );

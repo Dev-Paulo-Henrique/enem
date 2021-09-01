@@ -4,10 +4,8 @@ import { useAuth } from '../hooks/useAuth'
 import { Button } from '../components/Button';
 import { useHistory} from 'react-router-dom'
 import { auth, database } from '../services/firebase'
-import Bell from '../assets/images/bell.svg'
 import List from '../assets/images/list.svg'
 import { useEffect, useState } from 'react';
-import { Question } from '../components/Question';
 
 type FirebaseQuestions = Record<string, {
   Id: string;
@@ -61,15 +59,8 @@ export function Room() {
     await  history.push(`/play/`)
   }
 
-  async function notify() {
-    await  history.push(`/notify/`)
-  }
-  async function menu() {
-    await  history.push(`/menu/`)
-  }
-
   async function admin() {
-    await database.ref(`${user?.name}`).set({
+    await database.ref(`${user?.name}`).update({
       //Name: user?.name,
       admin:{
         Id: user?.id,
@@ -100,10 +91,8 @@ export function Room() {
           </div>
           <div className="btn">
           <Button onClick={play} disabled={!user}>Play</Button>
-          <Button onClick={exit} disabled={!user}>Sair</Button>
           <Button onClick={admin} disabled={!user}>Publish</Button>
-          <img src={Bell} alt="Bell" onClick={notify}/>
-          <img src={List} alt="List" onClick={menu}/>
+          <Button onClick={exit} disabled={!user}>Sair</Button>
           </div>
         </div>
       </header>
@@ -160,34 +149,7 @@ export function Room() {
         </div>
       </div>
       <fieldset>
-        <ul>
-          <li className="main fav">
-            <div className="content">
-              <div className="together">
-              <div className="background"></div>
-            <h1 className="type">{questions.map(question => {
-              return (
-                <Question
-            key={question.id}
-            content={question.content}
-            title={question.title}
-            type={question.type}
-            id={question.id}
-            >
-            </Question>
-              )
-            })}</h1>
-              </div>
-            <div className="heart" id="heart"></div>
-            </div>
-            <strong className="title">{questions.map(question => {
-              return(
-                <p>{question.id}</p>
-              )
-            })}</strong>
-            <p className="text">In ancient Rome, there was the habit of celebrating the birthday of a person. There weren’t parties like we know today, but cakes were prepared and offers were made. Then, the habits of wishing happy birthday, giving gifts and lighting candles became popular as a way to protect the birthday person from devils and ensure good things to the next year in the person’s life. The celebrations only became popular like we know today after fourteen centuries, in a collective festival performed in Germany.</p>
-          </li>
-        </ul>
+         ...
       </fieldset>
     </div>
 
