@@ -135,6 +135,16 @@
         margin-top: 16px;
         color: #777777;
       }
+      .id{
+        display: flex;
+        margin-top: 32px;
+        a{
+          text-decoration: none;
+          font-weight: bold;
+          cursor: pointer;
+          color: #F95A2C;
+        }
+      }
 
     }
   }
