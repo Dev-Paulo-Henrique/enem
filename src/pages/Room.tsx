@@ -12,12 +12,16 @@ import { Question } from '../components/Question';
 type FirebaseQuestions = Record<string, {
   Id: string;
   Photo: string;
+  Type: string;
+  Title: string;
+  Content: string;
 }>
 
 type QuestionType = {
   id: string;
   title: string;
   content: string;
+  type: string;
 }
 
 
@@ -37,8 +41,9 @@ export function Room() {
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
-          title: value.Id,
-          content: value.Photo,
+          title: value.Title,
+          content: value.Content,
+          type: value.Type
         }
       })
       //console.log(parsedQuestion)
@@ -166,6 +171,7 @@ export function Room() {
             key={question.id}
             content={question.content}
             title={question.title}
+            type={question.type}
             >
             </Question>
               )

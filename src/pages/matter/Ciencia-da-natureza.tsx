@@ -13,8 +13,8 @@ type FirebaseQuestions = Record<string, {
 
 type QuestionType = {
   id: string;
-  title: string;
-  content: string;
+  value: string;
+  photo: string;
 }
 
 
@@ -23,21 +23,23 @@ export function CN() {
   const { user } = useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
   const [ title, setTitle ] = useState('')
-  const name = "Liguagens, Códigos e suas Tecnologias"
+  const name = "Ciências da Natureza"
 
   useEffect(() => {
     const roomRef = database.ref(`${user?.name}/matter/${name}`)//criar outra camada
     //console.log(roomRef.key)
+    console.log(roomRef.parent)
     if(roomRef.key === name){
     roomRef.on('value', room => {
       const databaseRoom = room.val()
+      
       const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
 
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
-          title: value.Id,
-          content: value.Photo,
+          value: value.Id,
+          photo: value.Photo,
         }
       })
       //console.log(parsedQuestion)

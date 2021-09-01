@@ -28,7 +28,7 @@ export function AdminRoom() {
     }
 
     const roomRef = database.ref(`${user?.name}/matter/${newType}/`)
-    await roomRef.set({
+    await roomRef.push({
       title: newTitle,
       content: newQuestion,
     })
@@ -53,7 +53,7 @@ export function AdminRoom() {
     </header>
     <main className="content">
       <form onSubmit={handleSendQuestion}>
-        <select name={newType} id="" onChange={event => setNewType(event.target.value)} value={newType}>
+        <select name={newType} id="select" onChange={event => setNewType(event.target.value)} value={newType}>
           <option value="" disabled selected>Selecione...</option>
           <option value="Ciências da Natureza">Ciências da Natureza</option>
           <option value="Ciências Humanas">Ciências Humanas</option>
