@@ -20,12 +20,12 @@ export function Question({
             <div className="content">
               <div className="together">
               <div className="background"></div>
-            <h1 className="type">{type}Tipo</h1>
+            <h1 className="type">{type}</h1>
               </div>
             <div className="heart" id="heart"></div>
             </div>
-            <strong className="title">{title}Título</strong>
-            <p className="text">{content}Texto</p>
+            <strong className="title">{title}</strong>
+            <p className="text">{content}</p>
             <span>ID da pergunta: <a href={id}>{id}</a></span>
           </li>
         </ul>

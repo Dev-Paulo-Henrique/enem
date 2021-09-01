@@ -10,9 +10,9 @@ import { Question } from '../../components/Question';
 type FirebaseQuestions = Record<string, {
   Id: string;
   Photo: string;
-  Type: string;
-  Title: string;
-  Content: string;
+  type: string;
+  title: string;
+  content: string;
 }>
 
 type QuestionType = {
@@ -27,13 +27,12 @@ export function CN() {
   const history = useHistory()
   const { user } = useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
-  const [ title, setTitle ] = useState('')
   const name = "Ciências da Natureza"
 
   useEffect(() => {
     const roomRef = database.ref(`${user?.name}/matter/${name}`)//criar outra camada
     //console.log(roomRef.key)
-    console.log(roomRef.parent)
+    //console.log(roomRef.parent)
     if(roomRef.key === name){
     roomRef.on('value', room => {
       const databaseRoom = room.val()
@@ -43,17 +42,32 @@ export function CN() {
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
-          title: value.Title,
-          content: value.Content,
-          type: value.Type
+          title: value.title,
+          content: value.content,
+          type: value.type
         }
       })
       //console.log(parsedQuestion)
-      setTitle(databaseRoom.title)
       setQuestions(parsedQuestion)
-      console.log(databaseRoom)
+      //console.log(databaseRoom)
      //return console.log(JSON.stringify({databaseRoom}))
     })}
+    roomRef.on('child_added', room => {
+      const databaseRoom = room.val()
+      const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
+
+      const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
+        return {
+          id: key,
+          title: value.title,
+          content: value.content,
+          type: value.type
+        }
+      })
+      //console.log(parsedQuestion)
+      setQuestions(parsedQuestion)
+      console.log(databaseRoom.title)
+    })
     return () => {
       roomRef.off('value')
       //console.log(roomRef)
@@ -161,29 +175,6 @@ export function CN() {
             />
               )
             })}
-        <ul>
-          <li className="main fav">
-            <div className="content">
-              <div className="together">
-              <div className="background"></div>
-            <h1 className="type">{database.ref(`${user?.name}/matter/${name}`).key}</h1>
-              </div>
-            <div className="heart" id="heart"></div>
-            </div>
-            <strong className="title">{questions.map(question => {
-              return(
-                <p>{question.id}</p>
-              )
-            })}{questions.length}</strong>
-            <p className="text">In ancient Rome, there was the habit of celebrating the birthday of a person. There weren’t parties like we know today, but cakes were prepared and offers were made. Then, the habits of wishing happy birthday, giving gifts and lighting candles became popular as a way to protect the birthday person from devils and ensure good things to the next year in the person’s life. The celebrations only became popular like we know today after fourteen centuries, in a collective festival performed in Germany.</p>
-            <span>Id de pergunta: {questions.map(question => {
-              return(
-                <a>{question.id}</a>
-              )
-            })}</span>
-          </li>
-          
-        </ul>
       </fieldset>
     </div>
 
