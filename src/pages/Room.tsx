@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { useHistory} from 'react-router-dom'
 import { auth, database } from '../services/firebase'
 import { useEffect, useState } from 'react';
+import { Question } from '../components/Question';
 
 type FirebaseQuestions = Record<string, {
   Id: string;
@@ -28,7 +29,7 @@ export function Room() {
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
 
   useEffect(() => {
-    const roomRef = database.ref(`${user?.name}/matter/`)//criar outra camada
+    const roomRef = database.ref(`all`)//criar outra camada
     //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
@@ -148,7 +149,17 @@ export function Room() {
         </div>
       </div>
       <fieldset>
-         ...
+      {questions.map(question => {
+              return (
+                <Question
+            key={question.id}
+            content={question.content}
+            title={question.title}
+            type={question.type}
+            id={question.id}
+            />
+              )
+            })}
       </fieldset>
     </div>
 
