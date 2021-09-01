@@ -5,6 +5,7 @@ import { AuthContextProvider } from './contexts/AuthContext'
 import { AdminRoom } from "./pages/AdminRoom"
 import { Play } from "./pages/Play"
 import { CN } from "./pages/matter/Ciencia-da-natureza"
+import { CH } from "./pages/matter/Ciencia-humana"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/play/" exact component={Play}/>
         <Route path="/admin/" exact component={AdminRoom}/>
         <Route path="/matter/ciencias-da-natureza/" exact component={CN}/>
+        <Route path="/matter/ciencia-humana/" exact component={CH}/>
         </Switch>
     </AuthContextProvider>
     </BrowserRouter>
