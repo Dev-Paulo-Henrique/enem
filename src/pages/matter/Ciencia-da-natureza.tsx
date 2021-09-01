@@ -5,16 +5,21 @@ import { Button } from '../../components/Button';
 import { useHistory} from 'react-router-dom'
 import { auth, database } from '../../services/firebase'
 import { useEffect, useState } from 'react';
+import { Question } from '../../components/Question';
 
 type FirebaseQuestions = Record<string, {
   Id: string;
   Photo: string;
+  Type: string;
+  Title: string;
+  Content: string;
 }>
 
 type QuestionType = {
   id: string;
-  value: string;
-  photo: string;
+  title: string;
+  content: string;
+  type: string;
 }
 
 
@@ -38,8 +43,9 @@ export function CN() {
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
-          value: value.Id,
-          photo: value.Photo,
+          title: value.Title,
+          content: value.Content,
+          type: value.Type
         }
       })
       //console.log(parsedQuestion)
@@ -144,6 +150,17 @@ export function CN() {
         </div>
       </div>
       <fieldset>
+      {questions.map(question => {
+              return (
+                <Question
+            key={question.id}
+            content={question.content}
+            title={question.title}
+            type={question.type}
+            id={question.id}
+            />
+              )
+            })}
         <ul>
           <li className="main fav">
             <div className="content">

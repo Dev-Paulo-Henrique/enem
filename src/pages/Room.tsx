@@ -172,6 +172,7 @@ export function Room() {
             content={question.content}
             title={question.title}
             type={question.type}
+            id={question.id}
             >
             </Question>
               )

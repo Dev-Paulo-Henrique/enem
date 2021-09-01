@@ -30,7 +30,7 @@ export function AdminRoom() {
     const roomRef = database.ref(`${user?.name}/matter/${newType}/`)
     await roomRef.push({
       title: newTitle,
-      content: newQuestion,
+      content: newQuestion
     })
     //history.push(`/admin/${firebaseRoom.key}`)
 
