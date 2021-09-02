@@ -43,6 +43,7 @@ export function Fav() {
         }
       })
       setQuestions(parsedQuestion)
+      console.log(databaseRoom)
     })
     
     return () => {

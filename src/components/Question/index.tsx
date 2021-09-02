@@ -20,7 +20,10 @@ export function Question({
   const {user} = useAuth()
   async function fav() {
     await database.ref(`${user?.name}/fav`).push({
-      id
+      id,
+      title,
+      type,
+      content
     })
     Swal.fire({
       title: 'Adicionado aos favoritos',
