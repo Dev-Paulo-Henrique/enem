@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react';
 import { Question } from '../../components/Question';
 
 type FirebaseQuestions = Record<string, {
-  Id: string;
-  Photo: string;
   type: string;
   title: string;
   content: string;
