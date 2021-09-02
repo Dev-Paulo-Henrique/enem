@@ -10,9 +10,9 @@ import { Question } from '../components/Question';
 type FirebaseQuestions = Record<string, {
   Id: string;
   Photo: string;
-  Type: string;
-  Title: string;
-  Content: string;
+  type: string;
+  title: string;
+  content: string;
 }>
 
 type QuestionType = {
@@ -39,9 +39,9 @@ export function Room() {
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
-          title: value.Title,
-          content: value.Content,
-          type: value.Type
+          title: value.title,
+          content: value.content,
+          type: value.type
         }
       })
       //console.log(parsedQuestion)
@@ -49,6 +49,7 @@ export function Room() {
       //console.log(databaseRoom.admin)
      //return console.log(JSON.stringify({databaseRoom}))
     })
+    
     return () => {
       roomRef.off('value')
       //console.log(roomRef)

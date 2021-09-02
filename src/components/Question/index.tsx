@@ -40,7 +40,7 @@ export function Question({
             </div>
             <strong className="title">{title}</strong>
             <p className="text">{content}</p>
-            <span className="id">ID da pergunta: 
+            <span className="id">ID da postagem: 
             <span>{id}</span>
             </span>
           </li>

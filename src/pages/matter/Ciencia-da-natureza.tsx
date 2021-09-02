@@ -46,22 +46,6 @@ export function CN() {
       //console.log(parsedQuestion)
       setQuestions(parsedQuestion)
     })}
-    roomRef.on('child_added', room => {
-      const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
-
-      const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          title: value.title,
-          content: value.content,
-          type: value.type
-        }
-      })
-      //console.log(parsedQuestion)
-      setQuestions(parsedQuestion)
-      console.log(databaseRoom.title)
-    })
     return () => {
       roomRef.off('value')
       //console.log(roomRef)
