@@ -1,8 +1,11 @@
-import '../../styles/room.scss'
-import { useAuth } from '../../hooks/useAuth'
-import { database } from '../../services/firebase'
+import '../styles/room.scss'
+import { useAuth } from '../hooks/useAuth'
+//import { useRoom } from '../hooks/useRoom'
+import { Button } from '../components/Button';
+import { useHistory} from 'react-router-dom'
+import { auth, database } from '../services/firebase'
 import { useEffect, useState } from 'react';
-import { Question } from '../../components/Question';
+import { Question } from '../components/Question';
 
 type FirebaseQuestions = Record<string, {
   type: string;
@@ -18,17 +21,18 @@ type QuestionType = {
 }
 
 
-export function CH() {
+export function Fav() {
+  const history = useHistory()
   const { user } = useAuth()
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
-  const name = "Ciências Humanas"
+
   useEffect(() => {
-    const roomRef = database.ref(`${user?.name}/matter/${name}`)//criar outra camada
-    if(roomRef.key === name){
+    const roomRef = database.ref(`${user?.name}/fav`)//criar outra camada
+    //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
-      
       const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
+      
 
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
@@ -39,11 +43,34 @@ export function CH() {
         }
       })
       setQuestions(parsedQuestion)
-    })}
+    })
+    
     return () => {
       roomRef.off('value')
     }
   }, [ user?.name])
+
+  async function play() {
+    await  history.push(`/play/`)
+  }
+
+  async function admin() {
+    await database.ref(`${user?.name}`).update({
+      //Name: user?.name,
+      admin:{
+        Id: user?.id,
+        Photo: user?.avatar
+      }
+    })
+    await  history.push(`/admin/`)
+  }
+
+  async function exit() {
+    auth.signOut().then(() => {
+     console.log('Usuário desconectado')
+    })
+   await  history.push('/')
+  }
 
   return (
     <div id="page-room">
@@ -57,11 +84,17 @@ export function CH() {
               </div>
             ) : ('')}
           </div>
+          <div className="btn">
+          <Button onClick={play} disabled={!user}>Play</Button>
+          <Button onClick={admin} disabled={!user}>Publish</Button>
+          <Button onClick={exit} disabled={!user}>Sair</Button>
+          </div>
         </div>
       </header>
       <div className="matter">
         <nav>
         <div className="together">
+        <h1>Meus envios</h1>
         <div className="content">
         <div className="background one"></div>
             <a href="/matter/ciencias-da-natureza">
@@ -97,18 +130,8 @@ export function CH() {
         <div className="xp">
         <aside>
         <div className="background"></div>
-          Experience
+          <a href="/fav">Favoritos</a>
           </aside>
-          <div className="load">
-          <div className="loading">
-          <div className="indicator"></div>
-          </div>
-          
-          </div>
-         <div className="space">
-         <span className="zero">0</span>
-         <span className="hundred">100</span>
-         </div>
         </div>
       </div>
       <fieldset>
