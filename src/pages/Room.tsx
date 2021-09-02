@@ -136,18 +136,8 @@ export function Room() {
         <div className="xp">
         <aside>
         <div className="background"></div>
-          Experience
+          <a href="/fav">Favoritos</a>
           </aside>
-          <div className="load">
-          <div className="loading">
-          <div className="indicator"></div>
-          </div>
-          
-          </div>
-         <div className="space">
-         <span className="zero">0</span>
-         <span className="hundred">100</span>
-         </div>
         </div>
       </div>
       <fieldset>
