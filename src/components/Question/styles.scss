@@ -1,82 +1,77 @@
-.question {
-  background: #fefefe;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  padding: 24px;
 
-  & + .question {
-    margin-top: 8px;
-  }
-  
-  &.isHighLighted {
-    background: #F4F0FF;
-    border: 1px solid #835AFD;
-    
-    footer .user-info span {
-      color: #29292E;
-    }
-  }
-  
-  &.answered {
-    background: #DBDCDD;
-  }
-
-  p {
-    color: #29292e;
-  }
-
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 24px;
-
-    .user-info {
+    .main{
+      border: 1px solid #000;
+      border-radius: 10px;
+      width: auto;
+      height: auto;
+      box-shadow: 1px 1px 2px;
+      background: #FFF;
+      padding: 30px;
       display: flex;
-      align-items: center;
-
-      img {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-      }
-
-      span {
-        margin-left: 8px;
-        color: #737380;
-        font-size: 14px;
-      }
-    }
-
-    > div {
-      display: flex;
-      gap: 16px;
-    }
-
-    button {
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-      transition: filter 0.2s;
-
-      &.like-button {
+      flex-direction: column;
+      margin: 20px;
+      .content{
         display: flex;
-        align-items: flex-end;
-        color: #737380;
-        gap: 8px;
+        align-items: center;
+        justify-content: space-between;
 
-        &.liked {
-          color: #835afd;
 
-          svg path {
-            stroke: #835afd;
+        .together{
+          display: flex;
+          align-items: center;
+          .background{
+            border: 1px solid #000000;
+            border-radius: 50%;
+            padding: 20px;
+            background: #F95A2C;
           }
+          .type{
+            font-size: 30px;
+          }
+        }
+        .heart {
+          //display: none;
+          margin: 20px;
+          background: #F95A2C;
+          height: 20px;
+          width: 20px;
+          transform: rotate(-45deg);
+          position: relative;
+          cursor: pointer;
+      }
+      
+      .heart:before,
+      .heart:after {
+          content: "";
+          background: #F95A2C;
+          border-radius: 50%;
+          height: 20px;
+          width: 20px;
+          position: absolute;
+      }
+      .heart:before {
+          top: -10px;
+      }
+      .heart:after {
+          left: 10px;
+      }
+      }
+      .title{
+        margin-top: 32px;
+        font-size: 20px;
+      }
+      .text{
+        margin-top: 16px;
+        color: #777777;
+      }
+      .id{
+        display: flex;
+        margin-top: 32px;
+        span{
+          text-decoration: none;
+          font-weight: bold;
+          color: #F95A2C;
         }
       }
 
-      &:hover {
-        filter: brightness(0.7);
-      }
     }
-  }
-}
