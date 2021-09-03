@@ -9,12 +9,14 @@ type QuestionProps = {
   title: string;
   type: string;
   id: string;
+  author: string;
   children?: ReactNode;
 }
 export function Question({
   content ,
   type ,
   title,
+  author,
   id,
 }: QuestionProps) {
   const {user} = useAuth()
@@ -23,6 +25,7 @@ export function Question({
       id,
       title,
       type,
+      author,
       content
     })
     Swal.fire({
@@ -43,9 +46,14 @@ export function Question({
             </div>
             <strong className="title">{title}</strong>
             <p className="text">{content}</p>
+            <div className="author">
+              <span className="author">Autor:
+              <span>{author}</span>
+              </span>
             <span className="id">ID da postagem: 
             <span>{id}</span>
             </span>
+            </div>
           </li>
         </ul>
   );

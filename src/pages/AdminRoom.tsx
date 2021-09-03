@@ -38,6 +38,7 @@ export function AdminRoom() {
       title: newTitle,
       content: newQuestion,
       type: newType,
+      author: user?.name
     })
 
     setNewQuestion('')
