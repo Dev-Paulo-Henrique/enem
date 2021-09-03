@@ -1,5 +1,4 @@
-
-    .main{
+.main{
       border: 1px solid #000;
       border-radius: 10px;
       width: auto;
@@ -14,7 +13,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-
 
         .together{
           display: flex;
@@ -64,14 +62,17 @@
         margin-top: 16px;
         color: #777777;
       }
-      .id{
+      .author{
         display: flex;
-        margin-top: 32px;
-        span{
-          text-decoration: none;
-          font-weight: bold;
-          color: #F95A2C;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+        .id{
+          span{
+            text-decoration: none;
+            font-weight: bold;
+            color: #F95A2C;
+          }
         }
       }
-
     }
