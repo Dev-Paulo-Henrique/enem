@@ -3,6 +3,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 import { useEffect, useState } from 'react';
 import { Question } from '../../components/Question';
+import { List } from '../../components/List/index';
 
 type FirebaseQuestions = Record<string, {
   type: string;
@@ -63,56 +64,7 @@ export function CH() {
         </div>
       </header>
       <div className="matter">
-        <nav>
-        <div className="together">
-        <div className="content">
-        <div className="background one"></div>
-            <a href="/matter/ciencias-da-natureza">
-              Ciências da Natureza
-              </a>
-              </div>
-              <div className="content">
-              <div className="background three"></div>
-            <a href="/matter/liguagens-codigos-e-suas-tecnologias">
-              Liguagens, Códigos e suas Tecnologias
-              </a>
-              </div>
-              <div className="content">
-              <div className="background two"></div>
-            <a href="/matter/ciencias-humana">
-              Ciências Humanas
-              </a>
-              </div>
-              <div className="content">
-              <div className="background four"></div>
-            <a href="/matter/matematica-e-suas-tecnologias">
-              Matemática e suas tecnologias
-              </a>
-              </div>
-              <div className="content">
-              <div className="background five"></div>
-            <a href="/matter/redacao">
-              Redação
-              </a>
-              </div>
-              </div>
-        </nav>
-        <div className="xp">
-        <aside>
-        <div className="background"></div>
-          Experience
-          </aside>
-          <div className="load">
-          <div className="loading">
-          <div className="indicator"></div>
-          </div>
-          
-          </div>
-         <div className="space">
-         <span className="zero">0</span>
-         <span className="hundred">100</span>
-         </div>
-        </div>
+        <List/>
       </div>
       <fieldset>
       {questions.map(question => {
