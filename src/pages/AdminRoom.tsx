@@ -18,6 +18,7 @@ export function AdminRoom() {
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
+    
 
     if (newQuestion.trim() === '' || newType.trim() === '' || newTitle.trim() === '') {
       return
@@ -30,7 +31,7 @@ export function AdminRoom() {
     const roomRef = database.ref(`users/${user?.name}/matter/${newType}/`)
     const allData = database.ref("all")
     await roomRef.push({
-      title: newTitle,
+      title:newTitle,
       content: newQuestion,
       type: newType,
     })

@@ -12,6 +12,7 @@ type QuestionProps = {
   author: string;
   children?: ReactNode;
 }
+
 export function Question({
   content ,
   type ,
@@ -20,6 +21,12 @@ export function Question({
   id,
 }: QuestionProps) {
   const {user} = useAuth()
+  function capitalizeFirstLetter(string: any) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  function copyRoomCodeToClipboard() {
+    navigator.clipboard.writeText(id)
+  }
   async function fav() {
     await database.ref(`users/${user?.name}/fav`).push({
       id,
@@ -44,14 +51,14 @@ export function Question({
               </div>
             <div className="heart" id="heart" onClick={fav}></div>
             </div>
-            <strong className="title">{title}</strong>
-            <p className="text">{content}</p>
+            <strong className="title">{capitalizeFirstLetter(title)}</strong>
+            <p className="text">{capitalizeFirstLetter(content)}</p>
             <div className="author">
               <span className="author">Autor:
               <span>{author}</span>
               </span>
             <span className="id">ID da postagem: 
-            <span>{id}</span>
+            <span onClick={copyRoomCodeToClipboard}>{id}</span>
             </span>
             </div>
           </li>
