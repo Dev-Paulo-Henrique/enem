@@ -10,6 +10,7 @@ type QuestionProps = {
   type: string;
   id: string;
   author: string;
+  createdAt: string;
   children?: ReactNode;
 }
 
@@ -17,6 +18,7 @@ export function Question({
   content ,
   type ,
   title,
+  createdAt,
   author,
   id,
 }: QuestionProps) {
@@ -32,6 +34,7 @@ export function Question({
       id,
       title,
       type,
+      createdAt,
       author,
       content
     })
@@ -47,9 +50,11 @@ export function Question({
           <li className="main fav">
             <div className="content">
               <div className="together">
-            <h1 className="type">{type}</h1>
+            <h1 className="type">{type} 
+            <span>{createdAt}</span>
+            </h1>
               </div>
-            <div className="heart" id="heart" onClick={fav}></div>
+            <div className="heart" id="heart"  onClick={fav}></div>
             </div>
             <strong className="title">{capitalizeFirstLetter(title)}</strong>
             <p className="text">{capitalizeFirstLetter(content)}</p>

@@ -13,6 +13,7 @@ type FirebaseQuestions = Record<string, {
   title: string;
   content: string;
   author: string;
+  createdAt: string;
 }>
 
 type QuestionType = {
@@ -21,6 +22,7 @@ type QuestionType = {
   content: string;
   type: string;
   author: string;
+  createdAt: string;
 }
 
 
@@ -43,11 +45,11 @@ export function Fav() {
           title: value.title,
           content: value.content,
           type: value.type,
-          author: value.author
+          author: value.author,
+          createdAt: value.createdAt
         }
       })
       setQuestions(parsedQuestion)
-      console.log(databaseRoom)
     })
     
     return () => {
@@ -61,7 +63,6 @@ export function Fav() {
 
   async function admin() {
     await database.ref(`${user?.name}`).update({
-      //Name: user?.name,
       admin:{
         Id: user?.id,
         Photo: user?.avatar
@@ -115,6 +116,7 @@ export function Fav() {
             type={question.type}
             id={question.id}
             author={question.author}
+            createdAt={question.createdAt}
             />
               )
             })}

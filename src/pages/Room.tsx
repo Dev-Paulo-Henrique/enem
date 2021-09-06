@@ -13,6 +13,7 @@ type FirebaseQuestions = Record<string, {
   Photo: string;
   type: string;
   title: string;
+  createdAt: string;
   content: string;
   author: string;
 }>
@@ -22,6 +23,7 @@ type QuestionType = {
   title: string;
   content: string;
   type: string;
+  createdAt: string;
   author: string;
 }
 
@@ -45,7 +47,8 @@ export function Room() {
           title: value.title,
           content: value.content,
           type: value.type,
-          author: value.author
+          author: value.author,
+          createdAt: value.createdAt,
         }
       })
       //console.log(parsedQuestion)
@@ -120,6 +123,7 @@ export function Room() {
             type={question.type}
             id={question.id}
             author={question.author}
+            createdAt={question.createdAt}
             />
               )
             })}

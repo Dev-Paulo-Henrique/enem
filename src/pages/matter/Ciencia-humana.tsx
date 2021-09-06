@@ -9,6 +9,7 @@ type FirebaseQuestions = Record<string, {
   type: string;
   title: string;
   content: string;
+  createdAt: string;
   author: string;
 }>
 
@@ -17,6 +18,7 @@ type QuestionType = {
   title: string;
   content: string;
   type: string;
+  createdAt: string;
   author: string;
 }
 
@@ -39,7 +41,8 @@ export function CH() {
           title: value.title,
           content: value.content,
           type: value.type,
-          author: value.author
+          author: value.author,
+          createdAt: value.createdAt,
         }
       })
       setQuestions(parsedQuestion)
@@ -76,6 +79,7 @@ export function CH() {
             type={question.type}
             id={question.id}
             author={question.author}
+            createdAt={question.createdAt}
             />
               )
             })}
