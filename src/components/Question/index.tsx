@@ -1,11 +1,11 @@
-import './styles.scss' 
+import './styles.scss'
 import { ReactNode } from 'react'
 import Swal from 'sweetalert2'
 import { database } from '../../services/firebase'
 import { useAuth } from '../../hooks/useAuth'
 
 type QuestionProps = {
-  content:  string;
+  content: string;
   title: string;
   type: string;
   id: string;
@@ -15,14 +15,14 @@ type QuestionProps = {
 }
 
 export function Question({
-  content ,
-  type ,
+  content,
+  type,
   title,
   createdAt,
   author,
   id,
 }: QuestionProps) {
-  const {user} = useAuth()
+  const { user } = useAuth()
   function capitalizeFirstLetter(string: any) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -47,27 +47,27 @@ export function Question({
   }
   return (
     <ul>
-          <li className="main fav">
-            <div className="content">
-              <div className="together">
+      <li className="main fav">
+        <div className="content">
+          <div className="together">
             <h1 className="type">{type}</h1>
-              </div>
-            <div className="float">
-            <div className="heart" id="heart"  onClick={fav}></div>
+          </div>
+          <div className="float">
+            <div className="heart" id="heart" onClick={fav}></div>
             <span>{createdAt}</span>
-            </div>
-            </div>
-            <strong className="title">{capitalizeFirstLetter(title)}</strong>
-            <p className="text">{capitalizeFirstLetter(content)}</p>
-            <div className="author">
-              <span className="author">Autor:
-              <span>{author}</span>
-              </span>
-            <span className="id">ID da postagem: 
+          </div>
+        </div>
+        <strong className="title">{capitalizeFirstLetter(title)}</strong>
+        <p className="text">{capitalizeFirstLetter(content)}</p>
+        <div className="author">
+          <span className="author">Autor:
+            <span>{author}</span>
+          </span>
+          <span className="id">ID da postagem:
             <span onClick={copyRoomCodeToClipboard}>{id}</span>
-            </span>
-            </div>
-          </li>
-        </ul>
+          </span>
+        </div>
+      </li>
+    </ul>
   );
 }

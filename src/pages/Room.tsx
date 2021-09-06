@@ -2,7 +2,7 @@ import '../styles/room.scss'
 import { useAuth } from '../hooks/useAuth'
 //import { useRoom } from '../hooks/useRoom'
 import { Button } from '../components/Button';
-import { useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { auth, database } from '../services/firebase'
 import { useEffect, useState } from 'react';
 import { Question } from '../components/Question';
@@ -31,15 +31,15 @@ type QuestionType = {
 export function Room() {
   const history = useHistory()
   const { user } = useAuth()
-  const [ questions, setQuestions ] = useState<QuestionType[]>([])
+  const [questions, setQuestions] = useState<QuestionType[]>([])
 
   useEffect(() => {
     const roomRef = database.ref(`all`)//criar outra camada
     //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
-      
+      const firebaseQuestions: FirebaseQuestions = databaseRoom ?? {}
+
 
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
@@ -54,35 +54,35 @@ export function Room() {
       //console.log(parsedQuestion)
       setQuestions(parsedQuestion)
       //console.log(databaseRoom.admin)
-     //return console.log(JSON.stringify({databaseRoom}))
+      //return console.log(JSON.stringify({databaseRoom}))
     })
-    
+
     return () => {
       roomRef.off('value')
       //console.log(roomRef)
     }
-  }, [ user?.name])
+  }, [user?.name])
 
   async function play() {
-    await  history.push(`/play/`)
+    await history.push(`/play/`)
   }
 
   async function admin() {
     await database.ref(`users/${user?.name}`).update({
       //Name: user?.name,
-      admin:{
+      admin: {
         Id: user?.id,
         Photo: user?.avatar
       }
     })
-    await  history.push(`/admin/`)
+    await history.push(`/admin/`)
   }
 
   async function exit() {
     auth.signOut().then(() => {
-     console.log('Usuário desconectado')
+      console.log('Usuário desconectado')
     })
-   await  history.push('/')
+    await history.push('/')
   }
 
   return (
@@ -98,35 +98,35 @@ export function Room() {
             ) : ('')}
           </div>
           <div className="btn">
-          <Button onClick={play} disabled={!user}>Play</Button>
-          <Button onClick={admin} disabled={!user}>Publish</Button>
-          <Button onClick={exit} disabled={!user}>Sair</Button>
+            <Button onClick={play} disabled={!user}>Play</Button>
+            <Button onClick={admin} disabled={!user}>Publish</Button>
+            <Button onClick={exit} disabled={!user}>Sair</Button>
           </div>
         </div>
       </header>
       <div className="matter">
-      <List/>
+        <List />
         <div className="xp">
-        <aside>
-        <div className="background"></div>
-          <a href="/fav">Favoritos</a>
+          <aside>
+            <div className="background"></div>
+            <a href="/fav">Favoritos</a>
           </aside>
         </div>
       </div>
       <fieldset>
-      {questions.map(question => {
-              return (
-                <Question
-            key={question.id}
-            content={question.content}
-            title={question.title}
-            type={question.type}
-            id={question.id}
-            author={question.author}
-            createdAt={question.createdAt}
+        {questions.map(question => {
+          return (
+            <Question
+              key={question.id}
+              content={question.content}
+              title={question.title}
+              type={question.type}
+              id={question.id}
+              author={question.author}
+              createdAt={question.createdAt}
             />
-              )
-            })}
+          )
+        })}
       </fieldset>
     </div>
 

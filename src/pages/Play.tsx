@@ -48,7 +48,7 @@ export function Play() {
               <input type="radio" name="alt" id="e" />
               <label htmlFor="">Disponibilidade de recursos minerais.</label>
             </div>
-                <Button>Enviar</Button>
+            <Button>Enviar</Button>
           </div>
         </main>
       </div>

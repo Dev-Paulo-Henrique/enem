@@ -25,32 +25,33 @@ type QuestionType = {
 
 export function CH() {
   const { user } = useAuth()
-  const [ questions, setQuestions ] = useState<QuestionType[]>([])
+  const [questions, setQuestions] = useState<QuestionType[]>([])
   const name = "Ciências Humanas"
   useEffect(() => {
     const roomRef = database.ref(`users/${user?.name}/matter/${name}`)//criar outra camada
-    if(roomRef.key === name){
-    roomRef.on('value', room => {
-      const databaseRoom = room.val()
-      
-      const firebaseQuestions: FirebaseQuestions = databaseRoom  ??  {}
+    if (roomRef.key === name) {
+      roomRef.on('value', room => {
+        const databaseRoom = room.val()
 
-      const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          title: value.title,
-          content: value.content,
-          type: value.type,
-          author: value.author,
-          createdAt: value.createdAt,
-        }
+        const firebaseQuestions: FirebaseQuestions = databaseRoom ?? {}
+
+        const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
+          return {
+            id: key,
+            title: value.title,
+            content: value.content,
+            type: value.type,
+            author: value.author,
+            createdAt: value.createdAt,
+          }
+        })
+        setQuestions(parsedQuestion)
       })
-      setQuestions(parsedQuestion)
-    })}
+    }
     return () => {
       roomRef.off('value')
     }
-  }, [ user?.name])
+  }, [user?.name])
 
   return (
     <div id="page-room">
@@ -67,22 +68,22 @@ export function CH() {
         </div>
       </header>
       <div className="matter">
-        <List/>
+        <List />
       </div>
       <fieldset>
-      {questions.map(question => {
-              return (
-                <Question
-            key={question.id}
-            content={question.content}
-            title={question.title}
-            type={question.type}
-            id={question.id}
-            author={question.author}
-            createdAt={question.createdAt}
+        {questions.map(question => {
+          return (
+            <Question
+              key={question.id}
+              content={question.content}
+              title={question.title}
+              type={question.type}
+              id={question.id}
+              author={question.author}
+              createdAt={question.createdAt}
             />
-              )
-            })}
+          )
+        })}
       </fieldset>
     </div>
 

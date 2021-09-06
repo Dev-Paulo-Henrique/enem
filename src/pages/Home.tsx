@@ -10,7 +10,7 @@ export function Home() {
   const { user, signInWithGogle } = useAuth()
 
   async function handleCreateRoom() {
-    if(!user) {
+    if (!user) {
       await signInWithGogle()
     }
     await history.push('/main/')
@@ -23,15 +23,15 @@ export function Home() {
         <h2>Plataforma <br /> Autodidata</h2>
       </aside>
       <main>
-      <div className="main-content">
-      <img src={logoImg} alt="Letmeask"/>
-      <div className="separator">Login</div>
-        <button onClick={handleCreateRoom} className="create-room">
-        <img src={googleIconImg} alt="Logo do Google"/>
-          Entre com o Google
-        </button>
-        
-      </div>
+        <div className="main-content">
+          <img src={logoImg} alt="Letmeask" />
+          <div className="separator">Login</div>
+          <button onClick={handleCreateRoom} className="create-room">
+            <img src={googleIconImg} alt="Logo do Google" />
+            Entre com o Google
+          </button>
+
+        </div>
       </main>
     </div>
   )
