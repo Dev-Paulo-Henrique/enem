@@ -29,7 +29,7 @@ export function CN() {
   const name = "Ciências da Natureza"
 
   useEffect(() => {
-    const roomRef = database.ref(`${user?.name}/matter/${name}`)//criar outra camada
+    const roomRef = database.ref(`users/${user?.name}/matter/${name}`)//criar outra camada
     if(roomRef.key === name){
     roomRef.on('value', room => {
       const databaseRoom = room.val()
