@@ -30,7 +30,7 @@ export function Fav() {
   const [ questions, setQuestions ] = useState<QuestionType[]>([])
 
   useEffect(() => {
-    const roomRef = database.ref(`${user?.name}/fav`)//criar outra camada
+    const roomRef = database.ref(`users/${user?.name}/fav`)//criar outra camada
     //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
