@@ -51,7 +51,7 @@ export function Question({
             <div className="content">
               <div className="together">
             <h1 className="type">{type} 
-            <span>{createdAt}</span>
+            <span> - {createdAt}</span>
             </h1>
               </div>
             <div className="heart" id="heart"  onClick={fav}></div>

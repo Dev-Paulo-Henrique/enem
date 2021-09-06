@@ -18,6 +18,8 @@ export function AdminRoom() {
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
+    const createdAt = new Date()
+   const together = createdAt.getHours() + ':' + createdAt.getMinutes()
     
 
     if (newQuestion.trim() === '' || newType.trim() === '' || newTitle.trim() === '') {
@@ -34,14 +36,14 @@ export function AdminRoom() {
       title:newTitle,
       content: newQuestion,
       type: newType,
-      createdAt: new Date()
+      createdAt: together
     })
     await allData.push({
       title: newTitle,
       content: newQuestion,
       type: newType,
       author: user?.name,
-      createdAt: new Date()
+      createdAt: together
     })
 
     setNewQuestion('')
