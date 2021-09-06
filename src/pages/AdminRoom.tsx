@@ -36,14 +36,16 @@ export function AdminRoom() {
       title: newTitle,
       content: newQuestion,
       type: newType,
-      createdAt: together
+      createdAt: together,
+      id: user?.id,
     })
     await allData.push({
       title: newTitle,
       content: newQuestion,
       type: newType,
       author: user?.name,
-      createdAt: together
+      createdAt: together,
+      id: user?.id
     })
 
     setNewQuestion('')

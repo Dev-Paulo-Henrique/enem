@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import Swal from 'sweetalert2'
 import { database } from '../../services/firebase'
 import { useAuth } from '../../hooks/useAuth'
+import { useHistory } from 'react-router-dom'
 
 type QuestionProps = {
   content: string;
@@ -23,11 +24,15 @@ export function Question({
   id,
 }: QuestionProps) {
   const { user } = useAuth()
+  const history = useHistory()
   function capitalizeFirstLetter(string: any) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   function copyRoomCodeToClipboard() {
     navigator.clipboard.writeText(id)
+  }
+  function getUser(){
+    history.push(`/user/${id}`)
   }
   async function fav() {
     await database.ref(`users/${user?.name}/fav`).push({
@@ -61,7 +66,7 @@ export function Question({
         <p className="text">{capitalizeFirstLetter(content)}</p>
         <div className="author">
           <span className="author">Autor:
-            <span>{author}</span>
+            <span onClick={getUser}>{author}</span>
           </span>
           <span className="id">ID da postagem:
             <span onClick={copyRoomCodeToClipboard}>{id}</span>
