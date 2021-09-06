@@ -21,7 +21,7 @@ export function Question({
 }: QuestionProps) {
   const {user} = useAuth()
   async function fav() {
-    await database.ref(`${user?.name}/fav`).push({
+    await database.ref(`users/${user?.name}/fav`).push({
       id,
       title,
       type,

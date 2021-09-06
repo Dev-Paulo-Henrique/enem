@@ -65,7 +65,7 @@ export function Room() {
   }
 
   async function admin() {
-    await database.ref(`${user?.name}`).update({
+    await database.ref(`users/${user?.name}`).update({
       //Name: user?.name,
       admin:{
         Id: user?.id,
