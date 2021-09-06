@@ -37,7 +37,7 @@ export function AdminRoom() {
       content: newQuestion,
       type: newType,
       createdAt: together,
-      id: user?.id,
+      authorId: user?.id,
     })
     await allData.push({
       title: newTitle,
@@ -45,7 +45,7 @@ export function AdminRoom() {
       type: newType,
       author: user?.name,
       createdAt: together,
-      id: user?.id
+      authorId: user?.id
     })
 
     setNewQuestion('')
