@@ -25,23 +25,28 @@
           }
           .type{
             font-size: 30px;
-            span{
-              font-weight: normal;
-              font-size: 16px;
-              color: #ccc;
-            }
           }
         }
-        .heart {
-          //display: none;
-          margin: 20px;
-          background: #F95A2C;
-          height: 20px;
-          width: 20px;
-          transform: rotate(-45deg);
-          position: relative;
-          cursor: pointer;
-      }
+        .float{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .heart {
+            //display: none;
+            margin: 10px;
+            background: #F95A2C;
+            height: 20px;
+            width: 20px;
+            transform: rotate(-45deg);
+            position: relative;
+            cursor: pointer;
+        }
+        span{
+          font-weight: normal;
+          font-size: 16px;
+          color: #ccc;
+        }
+        }
       
       .heart:before,
       .heart:after {
@@ -58,6 +63,7 @@
       .heart:after {
           left: 10px;
       }
+
       }
       .title{
         margin-top: 32px;

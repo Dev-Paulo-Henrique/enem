@@ -50,11 +50,12 @@ export function Question({
           <li className="main fav">
             <div className="content">
               <div className="together">
-            <h1 className="type">{type} 
-            <span> - {createdAt}</span>
-            </h1>
+            <h1 className="type">{type}</h1>
               </div>
+            <div className="float">
             <div className="heart" id="heart"  onClick={fav}></div>
+            <span>{createdAt}</span>
+            </div>
             </div>
             <strong className="title">{capitalizeFirstLetter(title)}</strong>
             <p className="text">{capitalizeFirstLetter(content)}</p>
