@@ -6,11 +6,13 @@ import { database } from '../services/firebase'
 type FirebaseQuestions = Record<string, {
   author: string;
   authorId: string;
+  email: string;
 }>
 
 type UsersType = {
   author: string;
   authorId: string;
+  email: string;
   id: string;
 }
 
@@ -31,6 +33,7 @@ export function Profile(){
           id: key,
           author: value.author,
           authorId: value.authorId,
+          email: value.email,
         }
       })
       //console.log(parsedQuestion)
@@ -45,6 +48,7 @@ export function Profile(){
     }
   }, [user?.name])
 
+
   return(
     <>
     {users.map(user => {
@@ -53,6 +57,7 @@ export function Profile(){
           key={user.id}
           author={user.author}
           authorId={user.authorId}
+          email={user.email}
         />
       )
     })}

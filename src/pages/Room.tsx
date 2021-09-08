@@ -75,7 +75,8 @@ export function Room() {
       //Name: user?.name,
       admin: {
         Id: user?.id,
-        Photo: user?.avatar
+        Photo: user?.avatar,
+        Email: auth.currentUser?.email
       }
     })
     await history.push(`/admin/`)

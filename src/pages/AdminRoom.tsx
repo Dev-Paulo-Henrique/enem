@@ -1,7 +1,7 @@
 import { Button } from '../components/Button'
 import '../styles/admin.scss'
 //import { useRoom } from '../hooks/useRoom'
-import { database } from '../services/firebase'
+import { auth, database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import Public from '../assets/images/public.gif'
@@ -38,6 +38,7 @@ export function AdminRoom() {
       type: newType,
       createdAt: together,
       authorId: user?.id,
+      email: auth.currentUser?.email
     })
     await allData.push({
       title: newTitle,
@@ -45,7 +46,8 @@ export function AdminRoom() {
       type: newType,
       author: user?.name,
       createdAt: together,
-      authorId: user?.id
+      authorId: user?.id,
+      email: auth.currentUser?.email
     })
 
     setNewQuestion('')
