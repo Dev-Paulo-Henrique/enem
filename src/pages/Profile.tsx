@@ -7,12 +7,14 @@ type FirebaseQuestions = Record<string, {
   author: string;
   authorId: string;
   email: string;
+  photoURL: string;
 }>
 
 type UsersType = {
   author: string;
   authorId: string;
   email: string;
+  photoURL: string;
   id: string;
 }
 
@@ -34,6 +36,7 @@ export function Profile(){
           author: value.author,
           authorId: value.authorId,
           email: value.email,
+          photoURL: value.photoURL,
         }
       })
       //console.log(parsedQuestion)
@@ -58,6 +61,7 @@ export function Profile(){
           author={user.author}
           authorId={user.authorId}
           email={user.email}
+          photoURL={user.photoURL}
         />
       )
     })}
