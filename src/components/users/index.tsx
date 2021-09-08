@@ -1,4 +1,4 @@
-//import { useAuth } from "../../hooks/useAuth"
+import './styles.scss'
 
 type UserProps = {
   author: string;
@@ -18,10 +18,16 @@ export function User({
 
   return (
     <>
+    <div className="profile">
     <img src={photoURL} alt="Foto" />
-    <p>{author}</p>
-    <p>{authorId}</p>
-    <a href={mail}>{email}</a>
+    <div className="info">
+    <p className="name">Nome: {author}</p>
+    <p className="id">ID: {authorId}</p>
+    <span>Enviar email?
+      <a href={mail}>{email}</a>
+    </span>
+    </div>
+    </div>
     <br />
     </>
   )
