@@ -4,24 +4,14 @@ import { useAuth } from '../hooks/useAuth'
 import { database } from '../services/firebase'
 
 type FirebaseQuestions = Record<string, {
-  Id: string;
-  Photo: string;
-  type: string;
-  title: string;
-  createdAt: string;
-  content: string;
   author: string;
   authorId: string;
 }>
 
 type UsersType = {
-  id: string;
-  title: string;
-  content: string;
-  type: string;
-  createdAt: string;
   author: string;
   authorId: string;
+  id: string;
 }
 
 export function Profile(){
@@ -39,11 +29,7 @@ export function Profile(){
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
-          title: value.title,
-          content: value.content,
-          type: value.type,
           author: value.author,
-          createdAt: value.createdAt,
           authorId: value.authorId,
         }
       })
@@ -65,12 +51,7 @@ export function Profile(){
       return (
         <User
           key={user.id}
-          content={user.content}
-          title={user.title}
-          type={user.type}
-          id={user.id}
           author={user.author}
-          createdAt={user.createdAt}
           authorId={user.authorId}
         />
       )
