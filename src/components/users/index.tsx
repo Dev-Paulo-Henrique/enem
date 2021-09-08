@@ -28,7 +28,6 @@ export function User({
     </span>
     </div>
     </div>
-    <br />
     </>
   )
 }

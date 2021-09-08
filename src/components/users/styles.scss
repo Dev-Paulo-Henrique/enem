@@ -3,10 +3,13 @@ div{
   display: flex;
   img{
     width: 96px;
+    border-radius: 50%
   }
   .info{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    margin: 0 5px;
     .name{
       font-size: 32px;
     }
@@ -19,7 +22,8 @@ div{
         text-decoration: none;
         font-weight: bold;
         font-size:16px;
-        color: #F95A2C
+        color: #F95A2C;
+        margin-left: 5px;
       }
     }
   }
