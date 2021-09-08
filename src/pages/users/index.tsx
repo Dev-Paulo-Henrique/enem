@@ -8,6 +8,7 @@ type FirebaseQuestions = Record<string, {
   Photo: string;
   type: string;
   title: string;
+  authorId: string;
   createdAt: string;
   content: string;
   author: string;
@@ -17,6 +18,7 @@ type UsersType = {
   id: string;
   title: string;
   content: string;
+  authorId: string;
   type: string;
   createdAt: string;
   author: string;
@@ -42,9 +44,10 @@ export function User() {
           type: value.type,
           author: value.author,
           createdAt: value.createdAt,
+          authorId: value.authorId,
         }
       })
-      //console.log(parsedQuestion)
+      console.log(parsedQuestion)
       setUsers(parsedQuestion)
       //console.log(databaseRoom.admin)
       //return console.log(JSON.stringify({databaseRoom}))
@@ -67,6 +70,7 @@ export function User() {
           id={user.id}
           author={user.author}
           createdAt={user.createdAt}
+          authorId={user.authorId}
         />
       )
     })}

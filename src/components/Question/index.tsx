@@ -11,6 +11,7 @@ type QuestionProps = {
   type: string;
   id: string;
   author: string;
+  authorId: string;
   createdAt: string;
   children?: ReactNode;
 }
@@ -22,6 +23,7 @@ export function Question({
   createdAt,
   author,
   id,
+  authorId,
 }: QuestionProps) {
   const { user } = useAuth()
   const history = useHistory()
@@ -32,7 +34,9 @@ export function Question({
     navigator.clipboard.writeText(id)
   }
   function getUser(){
-    history.push(`/user/${author}`)
+    console.log(authorId)
+    history.push(`/user/${authorId}`)
+    
   }
   async function fav() {
     await database.ref(`users/${user?.name}/fav`).push({

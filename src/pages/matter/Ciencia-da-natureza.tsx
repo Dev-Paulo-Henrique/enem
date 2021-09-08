@@ -11,6 +11,7 @@ type FirebaseQuestions = Record<string, {
   content: string;
   author: string;
   createdAt: string;
+  authorId: string;
 }>
 
 type QuestionType = {
@@ -20,6 +21,7 @@ type QuestionType = {
   type: string;
   createdAt: string;
   author: string;
+  authorId: string;
 }
 
 
@@ -44,6 +46,7 @@ export function CN() {
             type: value.type,
             author: value.author,
             createdAt: value.createdAt,
+            authorId: value.authorId,
           }
         })
         setQuestions(parsedQuestion)
@@ -82,6 +85,7 @@ export function CN() {
               id={question.id}
               author={question.author}
               createdAt={question.createdAt}
+              authorId={question.authorId}
             />
           )
         })}
