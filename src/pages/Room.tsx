@@ -51,7 +51,7 @@ export function Room() {
           type: value.type,
           author: value.author,
           createdAt: value.createdAt,
-          authorId: value.author,
+          authorId: value.authorId,
         }
       })
       //console.log(parsedQuestion)

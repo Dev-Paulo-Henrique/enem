@@ -47,7 +47,7 @@ export function User() {
           authorId: value.authorId,
         }
       })
-      console.log(parsedQuestion)
+      //console.log(parsedQuestion)
       setUsers(parsedQuestion)
       //console.log(databaseRoom.admin)
       //return console.log(JSON.stringify({databaseRoom}))

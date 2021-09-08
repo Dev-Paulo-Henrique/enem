@@ -34,9 +34,7 @@ export function Question({
     navigator.clipboard.writeText(id)
   }
   function getUser(){
-    console.log(authorId)
     history.push(`/user/${authorId}`)
-    
   }
   async function fav() {
     await database.ref(`users/${user?.name}/fav`).push({
