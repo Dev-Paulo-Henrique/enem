@@ -78,6 +78,12 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 16px;
+        span>span{
+          cursor: pointer;
+          font-weight: bold;
+          color: #F95A2C;
+          margin-left: 2px;
+        }
         .id{
           span{
             text-decoration: none;
