@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Question } from "../../components/Question"
+import { Question } from "../Question"
 import { useAuth } from "../../hooks/useAuth"
 import { database } from "../../services/firebase"
 
