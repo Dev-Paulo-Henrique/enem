@@ -38,7 +38,8 @@ export function AdminRoom() {
       type: newType,
       createdAt: together,
       authorId: user?.id,
-      email: auth.currentUser?.email
+      email: auth.currentUser?.email,
+      photoURL: auth.currentUser?.photoURL
     })
     await allData.push({
       title: newTitle,
@@ -47,7 +48,8 @@ export function AdminRoom() {
       author: user?.name,
       createdAt: together,
       authorId: user?.id,
-      email: auth.currentUser?.email
+      email: auth.currentUser?.email,
+      photoURL: auth.currentUser?.photoURL
     })
 
     setNewQuestion('')
