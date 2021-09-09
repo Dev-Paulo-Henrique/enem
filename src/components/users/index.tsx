@@ -13,7 +13,12 @@ export function User({
   email,
   photoURL,
 }: UserProps) {
+  const pathname = window.location.pathname.substring(6).valueOf()
+  console.log(authorId, pathname)
   const mail = `mailto:${email}`
+  if(authorId === pathname) {
+    <h1>oi</h1>
+  }
   //const { user } = useAuth()
 
   return (
