@@ -24,6 +24,8 @@ export function Profile(){
 
   useEffect(() => {
     const roomRef = database.ref(`all`)//criar outra camada
+    const pathname = window.location.pathname.substring(6)
+    console.log(user?.id, pathname)
     //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
