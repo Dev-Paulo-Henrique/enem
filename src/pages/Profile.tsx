@@ -4,17 +4,17 @@ import { useAuth } from '../hooks/useAuth'
 import { database } from '../services/firebase'
 
 type FirebaseQuestions = Record<string, {
-  author: string;
+  Name: string;
   authorId: string;
-  email: string;
-  photoURL: string;
+  Email: string;
+  Photo: string;
 }>
 
 type UsersType = {
-  author: string;
+  Name: string;
   authorId: string;
-  email: string;
-  photoURL: string;
+  Email: string;
+  Photo: string;
   id: string;
 }
 
@@ -25,7 +25,7 @@ export function Profile(){
   useEffect(() => {
     const roomRef = database.ref(`users`)//criar outra camada
     //console.log(roomRef.key)
-    roomRef.on('value', room => {
+    roomRef.on('child_added', room => {
       const databaseRoom = room.val()
       const firebaseQuestions: FirebaseQuestions = databaseRoom ?? {}
 
@@ -33,13 +33,13 @@ export function Profile(){
       const parsedQuestion = Object.entries(firebaseQuestions).map(([key, value]) => {
         return {
           id: key,
-          author: value.author,
+          Name: value.Name,
           authorId: value.authorId,
-          email: value.email,
-          photoURL: value.photoURL,
+          Email: value.Email,
+          Photo: value.Photo,
         }
       })
-      //console.log(parsedQuestion)
+      console.log(parsedQuestion)
       setUsers(parsedQuestion)
       //console.log(databaseRoom.admin)
       //return console.log(JSON.stringify({databaseRoom}))
@@ -58,10 +58,10 @@ export function Profile(){
       return (
         <User
           key={user.id}
-          author={user.author}
+          Name={user.Name}
           authorId={user.authorId}
-          email={user.email}
-          photoURL={user.photoURL}
+          Email={user.Email}
+          Photo={user.Photo}
         />
       )
     })}

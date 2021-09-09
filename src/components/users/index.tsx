@@ -1,20 +1,20 @@
 import './styles.scss'
 
 type UserProps = {
-  author: string;
+  Name: string;
   authorId: string;
-  email: string;
-  photoURL: string;
+  Email: string;
+  Photo: string;
 }
 
 export function User({
-  author,
+  Name,
   authorId,
-  email,
-  photoURL,
+  Email,
+  Photo,
 }: UserProps) {
   const pathname = window.location.pathname.substring(6).valueOf()
-  const mail = `mailto:${email}`
+  const mail = `mailto:${Email}`
   //const url = `${window.location.host}/user/${authorId}`
   if(authorId === pathname) {
     console.log(pathname)
@@ -24,12 +24,12 @@ export function User({
   return (
     <>
     <div className="profile">
-    <img src={photoURL} alt="Foto" />
+    <img src={Photo} alt="Foto" />
     <div className="info">
-    <p className="name">Nome: {author}</p>
+    <p className="name">Nome: {Name}</p>
     <p className="id">ID: {authorId}</p>
     <span>Enviar email?
-      <a href={mail}>{email}</a>
+      <a href={mail}>{Email}</a>
     </span>
     </div>
     </div>
