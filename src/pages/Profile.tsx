@@ -23,7 +23,7 @@ export function Profile(){
   const [users, setUsers] = useState<UsersType[]>([])
 
   useEffect(() => {
-    const roomRef = database.ref(`all`)//criar outra camada
+    const roomRef = database.ref(`users`)//criar outra camada
     //console.log(roomRef.key)
     roomRef.on('value', room => {
       const databaseRoom = room.val()
