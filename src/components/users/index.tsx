@@ -15,16 +15,14 @@ export function User({
 }: UserProps) {
   const pathname = window.location.pathname.substring(6).valueOf()
   const mail = `mailto:${email}`
-  const url = `${window.location.host}/user/${authorId}`
+  //const url = `${window.location.host}/user/${authorId}`
   if(authorId === pathname) {
-    <a href={url} id="url">oi</a>
-    console.log(url)
+    console.log(pathname)
   }
   //const { user } = useAuth()
 
   return (
     <>
-    <script></script>
     <div className="profile">
     <img src={photoURL} alt="Foto" />
     <div className="info">
