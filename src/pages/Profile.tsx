@@ -34,14 +34,14 @@ export function Profile(){
         return {
           id: key,
           Name: value.Name,
-          authorId: value.authorId,
+          authorId: databaseRoom.key,
           Email: value.Email,
           Photo: value.Photo,
         }
       })
-      console.log(parsedQuestion)
+      //console.log(parsedQuestion)
       setUsers(parsedQuestion)
-      //console.log(databaseRoom.admin)
+      console.log(databaseRoom)
       //return console.log(JSON.stringify({databaseRoom}))
     })
 

@@ -17,7 +17,7 @@ export function User({
   const mail = `mailto:${Email}`
   //const url = `${window.location.host}/user/${authorId}`
   if(authorId === pathname) {
-    console.log(pathname)
+    console.log(pathname, 'oi')
   }
   //const { user } = useAuth()
 
@@ -28,7 +28,7 @@ export function User({
     <div className="info">
     <p className="name">Nome: {Name}</p>
     <p className="id">ID: {authorId}</p>
-    <span>Enviar email?
+    <span>Enviar e-mail?
       <a href={mail}>{Email}</a>
     </span>
     </div>
