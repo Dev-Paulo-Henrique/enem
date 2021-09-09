@@ -41,7 +41,7 @@ export function Profile(){
       })
       //console.log(parsedQuestion)
       setUsers(parsedQuestion)
-      console.log(databaseRoom)
+      console.log(databaseRoom.admin)
       //return console.log(JSON.stringify({databaseRoom}))
     })
 
