@@ -56,7 +56,7 @@ export function Room() {
       })
       //console.log(parsedQuestion)
       setQuestions(parsedQuestion)
-      //console.log(databaseRoom.admin)
+      console.log(databaseRoom.admin)
       //return console.log(JSON.stringify({databaseRoom}))
     })
 
