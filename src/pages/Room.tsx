@@ -54,10 +54,7 @@ export function Room() {
           authorId: value.authorId,
         }
       })
-      //console.log(parsedQuestion)
       setQuestions(parsedQuestion)
-      //console.log(databaseRoom.admin)
-      //return console.log(JSON.stringify({databaseRoom}))
     })
 
     return () => {
