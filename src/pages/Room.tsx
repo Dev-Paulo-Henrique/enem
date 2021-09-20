@@ -59,7 +59,6 @@ export function Room() {
 
     return () => {
       roomRef.off('value')
-      //console.log(roomRef)
     }
   }, [user?.name])
 
